@@ -1,0 +1,121 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+$color1: #7600a9;
+$color2: #8a16bd;
+$color3: #a80083;
+$color4: #be1a95;
+$color5: #2700b3;
+
+
+$luis: #ff66FF;
+$blue: #0d6efd;
+$bluef: #0258da;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+$primary: $color5;
+$secondary: $gray-600;
+$success: $color1;
+$info: $purple;
+$warning: $yellow;
+$danger: $color3;
+$light: $gray-100;
+$dark: $gray-900;
+
+$navbar-light-color: $purple;
+$body-bg: #e6f8ff;
+$navbar-light-hover-color: $luis;
+$navbar-color: rgb(50, 185, 9);
+$navbar-color: rgb(216, 10, 206);
+$navbar-brand-color: rgb(255, 255, 255);
+$modal-content-bg: $white;
+/* $ $ $  */
+//$btn-border:;
+$navbar-padding-left: 5rem;
+
+.navbar-nav {
+    --navbar-color: rgb(27, 189, 238);
+    --navbar-hover-color: $luis;
+    /*   --navbar-brand-color: rgb(27, 189, 238); */
+    --navbar-brand-hover-color: rgb(27, 189, 238);
+    --nav-link-color: rgb(27, 189, 238);
+    --navbar-toggler-border-color: rgb(27, 189, 238);
+}
+
+.p6 {
+    padding-right: 5rem;
+}
+
+.btn {
+    color: $luis;
+}
+
+body {
+    /*  --bs-body-font-family: var(--bs-font-monospace); */
+    --bs-body-line-height: 1.4;
+    --bs-body-bg: var(--bs-white-100);
+
+}
+
+.table {
+    --bs-table-color: var(--bs-gray-600);
+    --bs-table-bg: var(--bs-gray-100);
+    --bs-table-border-color: transparent;
+}
+
+
+
+@import "../node_modules/bootstrap/scss/functions";
+
+// Variable overrides second
+/* $primary: rgb(27, 189, 238); */
+
+/* $secondary: rgb(27, 189, 238);
+$success: rgb(50, 185, 9);
+$info: rgb(50, 185, 9);
+$warning: rgb(27, 189, 238);
+$danger: rgb(241, 14, 52);
+$light: rgb(27, 189, 238);
+$dark: rgb(27, 189, 238);
+$enable-shadows: true;
+$navbar-dark-color: rgb(27, 189, 238); */
+// Required Bootstrap imports
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// Optional components
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
