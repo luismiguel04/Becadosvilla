@@ -18,7 +18,7 @@
     <div> <img width=" 80px" class="float-left" src="http://localhost/becadosvilla/public/app/logovillavvv.jpeg" />
 
     </div>
-    <div class="container">
+    <div class="container justify-container:left">
 
         <p class="font-weight-lighter">{{ "Carretera Chalco-Mixquic"}}<br>
             Km. 2, Chalco, Estado de México<br>
@@ -59,53 +59,60 @@
 
         <div class="row">
             <div class="col-12 ">
-                <!--  <div class="table-responsive"> -->
-                <div class="row">
-                    <div class="col-6  mx-auto">
-                        <table class=" table table table-bordered table-striped table-sm">
-                            <thead class=" thead  align-top">
-                                <tr>
-                                    <th>Número</th>
-                                    <th>Becado</th>
-                                    <th>Monto</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($detalles as $detalle)
+                <div class="table-responsive">
 
-                                <tr>
-                                    <td>{{ ++$i }}</td>
+                    <table class=" table table table-bordered table-striped table-sm">
+                        <thead class=" thead  align-top">
+                            <tr>
+                                <th>#</th>
+                                <th>Becado</th>
+                                <th>Carrera</th>
+                                <th>Universidad</th>
+                                <th>Cuenta bancaria</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($detalles as $detalle)
 
-                                    <td>
-                                        {{ $detalle->becado->nombre }}
-                                        {{ $detalle->becado->ApellidoP }}
-                                        {{ $detalle->becado->ApellidoM }}
+                            <tr>
+                                <td>{{ ++$i }}</td>
 
-                                    </td>
-                                    <td>
+                                <td>
+                                    {{ $detalle->becado->nombre }}
+                                    {{ $detalle->becado->ApellidoP }}
+                                    {{ $detalle->becado->ApellidoM }}
 
-                                        <slot>$</slot>{{ number_format($detalle->Monto, 2, ".", ",") }}
-                                    </td>
+                                </td>
+                                <td> {{ $detalle->becado->Carrera}}
+                                </td>
+                                <td> {{ $detalle->becado->Universidad }}
+                                </td>
+                                <td> {{ $detalle->becado->Banco. ' ' . $detalle->becado->CuentaBanc}}
+                                </td>
+                                <td>
 
-                                </tr>
-                                @endforeach
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th COLSPAN="2" scope="row" style="text-align:center;"> Monto Total
-                                    </th>
-                                    <th>
-                                        <slot>$</slot>{{ number_format($total, 2, ".", ",") }}
-                                    </th>
+                                    <slot>$</slot>{{ number_format($detalle->Monto, 2, ".", ",") }}
+                                </td>
+
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th COLSPAN="5" scope="row" style="text-align:center;"> Monto Total
+                                </th>
+                                <th>
+                                    <slot>$</slot>{{ number_format($total, 2, ".", ",") }}
+                                </th>
 
 
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+
                 </div>
-
-                <!--  </div> -->
             </div>
         </div>
     </section>

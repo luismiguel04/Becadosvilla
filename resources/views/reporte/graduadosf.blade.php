@@ -1,11 +1,12 @@
 <head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <style>
-        body {
-            margin-right: 3rem;
-        }
+    body {
+        margin-right: 3rem;
+    }
     </style>
 
 </head>
@@ -53,7 +54,8 @@
                                 {{ $becado->nombre }} {{ $becado->ApellidoP }} {{ $becado->ApellidoM }}
                             </td>
                             <td>
-                                <img src="http://localhost/becadosvilla//storage/app/images/{{$becado->Foto_path}}">
+                                <img height="96px" width="72px" class="img-thumbnail"
+                                    src="http://localhost/becadosvilla//storage/app/images/{{$becado->Foto_path}}">
                             </td>
 
                         </tr>

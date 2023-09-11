@@ -128,14 +128,35 @@ class ReporteController extends Controller
             'isRemoteEnabled' => true
         ])->loadView('reporte.programaf', compact('becados', 'programa', 'i'))
             ->setPaper('a4');
+        //return $pdf->download('provedores.pdf');
+        return $pdf->stream('reporte programa.pdf');
+    }
+    public function programafano($id)
+    {
 
+        $dompdf = new Dompdf();
+        $options = $dompdf->getOptions();
+        $options->setDefaultFont('Verdana');
+        $dompdf->setOptions($options);
 
+        $becados = Becado::all()->where('programa_id', '=', $id);
+        $programa = programa::find($id);
+        $i = 0;
 
-
+        $pdf = PDF::setOptions([
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true
+        ])->loadView('reporte.programafano', compact('becados', 'programa', 'i'))
+            ->setPaper('a4');
 
         //return $pdf->download('provedores.pdf');
         return $pdf->stream('reporte programa.pdf');
     }
+
+
+
+
+
     public function estatus($id)
     {
         $becados = Becado::all()->where('status', '=', $id);
@@ -276,6 +297,7 @@ class ReporteController extends Controller
         $ano = $request->get('ano');
 
         $becado = Becado::find($id);
+        $i = 0;
 
         $detalles = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
             ->whereYear('gastos.fecha', $ano)
@@ -336,7 +358,7 @@ class ReporteController extends Controller
             'isHtml5ParserEnabled' => true,
             'isRemoteEnabled' => true
         ])->loadView('reporte.gastospormes', compact('i', 'programab', 'detalles', 'total', 'fecha', 'becados'))
-            ->setPaper('a4');
+            ->setPaper('a4', 'landscape');
 
         //return $pdf->download('provedores.pdf');
         return $pdf->stream('reporte programa.pdf');

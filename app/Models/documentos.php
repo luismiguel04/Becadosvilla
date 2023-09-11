@@ -10,7 +10,7 @@ class documentos extends Model
 
     static $rules = [
 
-        'Foto_path' =>  'required|mimes:pdf',
+        'Foto_path' =>  'required',
         'becado_id' => 'required',
     ];
     protected $casts = [

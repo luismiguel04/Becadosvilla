@@ -2,13 +2,12 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('/app/logovillavvv.jpeg') }}">
     <link rel="shortcut icon" sizes="192x192" href="{{ asset('/app/logovillavvv.jpeg') }}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <style>
-    body {
-        margin-right: 3rem;
-    }
+        body {
+            margin-right: 3rem;
+        }
     </style>
 
 </head>

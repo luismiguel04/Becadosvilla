@@ -6,7 +6,9 @@ use App\Models\Becado;
 use App\Models\documentos;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 class DocumentosController extends Controller
 {
@@ -23,6 +25,10 @@ class DocumentosController extends Controller
     public function stores(Request $request)
     {
         request()->validate(documentos::$rules);
+
+
+
+
 
         $files = $request->file('Foto_path');
         if ($request->hasFile('Foto_path')) {

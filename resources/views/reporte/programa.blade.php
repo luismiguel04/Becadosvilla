@@ -1,11 +1,12 @@
 <head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <style>
-        body {
-            margin-right: 3rem;
-        }
+    body {
+        margin-right: 3rem;
+    }
     </style>
 
 </head>
@@ -36,9 +37,11 @@
                     <table class=" table table table-bordered table-striped">
                         <thead class=" thead">
                             <tr>
-                                <th>Número</th>
+                                <th>#</th>
 
                                 <th>Nombre del becado</th>
+                                <th>Carrera</th>
+                                <th>Universidad</th>
 
 
                             </tr>
@@ -50,6 +53,10 @@
                                 <td>{{ ++$i }}</td>
                                 <td>
                                     {{ $becado->nombre }} {{ $becado->ApellidoP }} {{ $becado->ApellidoM }}
+                                </td>
+                                <td> {{ $becado->Carrera}}
+                                </td>
+                                <td> {{ $becado->Universidad }}
                                 </td>
 
                             </tr>

@@ -27,7 +27,9 @@
                     <table id="detalles" class="table  table-striped  table-hover ">
                         <thead style="text-align: center;">
                             <th>Becado</th>
-                            <th>Programa</th>
+                            <th>Carrera</th>
+                            <th>Universidad</th>
+
                             <th>Monto</th>
                         </thead>
                         <tbody>
@@ -37,7 +39,9 @@
                                     {{ $detall->becado->ApellidoP }}
                                     {{ $detall->becado->ApellidoM }}
                                 </td>
-                                <td> {{ $detall->becado->programa->nombre }}</td>
+
+                                <td> {{ $detall->becado->Carrera }}</td>
+                                <td> {{ $detall->becado->Universidad }}</td>
                                 <td>
                                     <slot> $</slot>{{ number_format($detall->Monto, 2, ".", ",") }} mxn.
                                 </td>
@@ -47,7 +51,7 @@
 
                         </tbody>
                         <tfoot>
-                            <th colspan="2">
+                            <th colspan="3">
                                 <h5 style="font-weight:bold;">Total
                                 </h5>
                             </th>

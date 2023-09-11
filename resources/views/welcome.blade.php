@@ -31,7 +31,7 @@
         tab-size: 2;
         font-weight: bold;
         /* font-family: Figtree, sans-serif; */
-        font-family: cursive;
+        /*   font-family: cursive; */
         font-feature-settings: normal;
 
 
@@ -341,13 +341,23 @@
     }
 
     .title {
-        font-size: 50px;
+
         padding-top: 20%;
         text-align: center;
         justify-content: center;
         padding-right: 10%;
         padding-left: 15%;
         color: #0000FF;
+    }
+
+    .t {
+        font-size: 50px;
+        color: #000000;
+    }
+
+    .b {
+        font-size: 40px;
+        color: #303030;
     }
     </style>
 </head>
@@ -377,16 +387,21 @@
             <img src=" http://localhost/becadosvilla/public/app/fondo2.jpg" alt=" Cargando imagen...">
         </div>
 
-        <div class="title" style="color:#FFFFFF;"> Becados villa de los niños 2019</div>
+        <div class="title" style="color:#000000;">
+            <div class="t">Programa de Becas</div> <br>
+            <div class="b">Villa de los Niños</div>
+        </div>
+
+
 
 
     </div>
 
-    <style>
-    body {
-        background-image: linear-gradient(to right, #FFFFFF 0%, #7600A9 25%, #0000ff 65%, #FFFFFF 90%);
-    }
-    </style>
+    <!--     <style>
+        body {
+            background-image: linear-gradient(to right, #FFFFFF 0%, #7600A9 25%, #0000ff 65%, #FFFFFF 90%);
+        }
+    </style> -->
 
 
 

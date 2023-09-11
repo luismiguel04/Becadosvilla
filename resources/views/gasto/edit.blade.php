@@ -13,16 +13,14 @@
 
             <div class="card card-default">
                 <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <span class="card-title">{{ __('Actualizar') }} Gasto</span>
-                    <a class="btn  btn btn-primary btn-sm float-right" data-placement="left"
-                        href="{{ route('gastos.index') }}">
+                    <span class="card-title">{{ __('Actualizar') }} Gasto Programa {{$prog->programa->nombre}}</span>
+                    <a class="btn  btn btn-primary btn-sm float-right" data-placement="left" href="{{ route('gastos.index') }}">
                         {{ __('Regresar') }}</a>
 
                 </div>
                 <div class="card-body">
-                    @include('gasto.searche')
-                    <form method="POST" action="{{ route('gastos.update', $gasto->id) }}" role="form"
-                        enctype="multipart/form-data">
+
+                    <form method="POST" action="{{ route('gastos.update', $gasto->id) }}" role="form" enctype="multipart/form-data">
                         {{ method_field('PATCH') }}
                         @csrf
 
@@ -36,66 +34,67 @@
 </section>
 
 <script>
-$(document).ready(function() {
-    $('#bt_add').click(function() {
-        agregar();
+    $(document).ready(function() {
+        $('#bt_add').click(function() {
+            agregar();
+        });
     });
-});
 
-var cont = 0;
-total = 0;
-subtotal = [];
-/* $("#guardar").hide(); */
+    var cont = 0;
+    total = 0;
+    subtotal = [];
 
-function agregar() {
-    pidbecado = $("#pidbecado").val();
-    becado = $("#pidbecado option:selected").text();
-    Monto = $("#PMonto").val();
+    /* $("#guardar").hide(); */
 
-    subtotal[cont] = (Monto * 1);
-    total = total + subtotal[cont];
+    function agregar() {
+        pidbecado = $("#pidbecado").val();
+        becado = $("#pidbecado option:selected").text();
+        Monto = $("#PMonto").val();
 
-    var fila = '<tr class="selected" id="fila' + cont +
-        '"> <td><button type="button"  class="btn btn-warning" onclick="eliminar(' +
-        cont + ');">x</button></td><td><input type="hidden" id="becado_id" name="becado_id[]" value=' +
-        pidbecado +
-        '>' + becado +
-        '</td><td><input type="number" name="Monto[]" id="Monto" value=' + Monto + ' multiple ></td></tr>';
-    cont++;
+        subtotal[cont] = (Monto * 1);
+        total = total + subtotal[cont];
 
-
-
-    limpiar();
-    $("#pidbecado").focus();
-    $("#total").html("$ MXN " + total);
-    /*    evaluar(); */
-    $('#detalles').append(fila);
+        var fila = '<tr class="selected" id="fila' + cont +
+            '"> <td><button type="button"  class="btn btn-warning" onclick="eliminar(' +
+            cont + ');">x</button></td><td><input type="hidden" id="becado_id" name="becado_id[]" value=' +
+            pidbecado +
+            '>' + becado +
+            '</td><td><input type="number" name="Monto[]" id="Monto" value=' + Monto + ' multiple ></td></tr>';
+        cont++;
 
 
-    console.log(becado_id);
 
-}
+        limpiar();
+        $("#pidbecado").focus();
+        $("#total").html("$ MXN " + total);
+        /*    evaluar(); */
+        $('#detalles').append(fila);
 
-function limpiar() {
-    $("#PMonto").val('');
 
-}
+        console.log(becado_id);
 
-/*   function evaluar() {
-      if (total > 0) {
-          $("#guardar").show();
-      } else {
-          $("#guardar").hide();
-      }
+    }
 
-  } */
+    function limpiar() {
+        $("#PMonto").val('');
 
-function eliminar(index) {
-    total = total - subtotal[index];
-    $("#total").html("$ MXN " + total);
-    $("#fila" + index).remove();
-    /*         evaluar(); */
-}
+    }
+
+    /*   function evaluar() {
+          if (total > 0) {
+              $("#guardar").show();
+          } else {
+              $("#guardar").hide();
+          }
+
+      } */
+
+    function eliminar(index) {
+        total = total - subtotal[index];
+        $("#total").html("$ MXN " + total);
+        $("#fila" + index).remove();
+        /*         evaluar(); */
+    }
 </script>
 
 @endsection

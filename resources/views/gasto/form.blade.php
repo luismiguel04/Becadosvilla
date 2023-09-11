@@ -10,20 +10,17 @@
 
                                 <label for="fecha">{{ __('Fecha de solicitud') }}</label>
 
-                                <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" name="fecha"
-                                    id="fecha" type="month" placeholder="{{ __('Fecha de nacimiento') }}"
-                                    value="{{ old('fecha',$gasto->fecha) }}" required />
+                                <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" name="fecha" id="fecha" type="month" placeholder="{{ __('Fecha de nacimiento') }}" value="{{ old('fecha',$gasto->fecha) }}" required />
                                 @if ($errors->has('fecha'))
-                                <span id="fecha-error" class="error text-danger"
-                                    for="input-fecha">{{ $errors->first('fecha') }}</span>
+                                <span id="fecha-error" class="error text-danger" for="input-fecha">{{ $errors->first('fecha') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="col-sm-5">
                             <div class="from-group" id="fbecado">
-                                <label for="pidbecado">becado</label>
+                                <label for="pidbecado">Becado</label>
                                 <select name="pidbecado" class="form-control choices-single" id="pidbecado">
-                                    <option></option>
+                                    <option selected disabled value="">Seleccionar Becado</option>
                                     @foreach($becados as $becado)
                                     <option value="{{$becado->id}}">
                                         {{$becado->nombre.' '.$becado->ApellidoP. ' '.$becado->ApellidoM}}
@@ -45,8 +42,7 @@
                         </div>
                         <div class="col-sm-12">
                             <br>
-                            <table id="detalles"
-                                class="table  table-striped table-bordered table-condensed table-hover ">
+                            <table id="detalles" class="table  table-striped table-bordered table-condensed table-hover ">
                                 <thead>
                                     <th style="background-color:#ff66FF">Opciones</th>
                                     <th style="background-color:#ff66FF">Becado</th>

@@ -18,10 +18,11 @@
         </div>
         <div class="mb-3">
             <label for="formFileMultiple" class="form-label">Seleciona los documentos del becado</label>
-            <input class="form-control" type="file" name="Foto_path[]" id="Foto_path" multiple required>
+            <input class="form-control" type="file" name="Foto_path[]" id="Foto_path"
+                accept="application/pdf,application/.doc, .docx" multiple required>
         </div>
     </div>
-    <div class="box-footer mt20">
+    <div class=" box-footer mt20">
         <br>
         <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
     </div>

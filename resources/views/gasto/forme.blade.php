@@ -8,14 +8,18 @@
 
 
 
+
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="hidden" class="form-control" id="gasto" name="gasto" value="{{$gasto->id}}">
+                                <input type="hidden" class="form-control" id="gasto" name="gasto"
+                                    value="{{$gasto->id}}">
                                 <label for="fecha">{{ __('Fecha de solicitud') }}</label>
 
-                                <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" name="fecha" id="fecha" type="date" value="{{ old('fecha',$gasto->fecha) }}" required />
+                                <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" name="fecha"
+                                    id="fecha" type="date" value="{{ old('fecha',$gasto->fecha )}}" required />
                                 @if ($errors->has('fecha'))
-                                <span id="fecha-error" class="error text-danger" for="input-fecha">{{ $errors->first('fecha') }}</span>
+                                <span id="fecha-error" class="error text-danger"
+                                    for="input-fecha">{{ $errors->first('fecha') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -23,9 +27,10 @@
 
                         <div class="col-sm-5">
                             <div class="from-group">
-                                <label for="pidbecado">becado</label>
+                                <label for="pidbecado">Becado</label>
                                 <select name="pidbecado" class="form-control choices-single" id="pidbecado">
-                                    <option></option>
+                                    <option selected disabled value="">Seleccionar Becado
+                                    </option>
                                     @foreach($becados as $becado)
                                     <option value="{{$becado->id}}">
                                         {{$becado->nombre.' '.$becado->ApellidoP. ' '.$becado->ApellidoM}}
@@ -64,7 +69,9 @@
                                             <!--     <form action="{{ route('eliminar',$detall->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE') -->
-                                            <a class="btn btn-sm btn-danger" href="{{ route('eliminar',$detall->id) }}"><i class="fa fa-fw fa-trash"></i>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="{{ route('eliminar',$detall->id) }}"><i
+                                                    class="fa fa-fw fa-trash"></i>
                                                 {{ __('Eliminar') }}</a>
                                             <!--  <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button> -->
                                             <!--  </form> -->
@@ -98,7 +105,8 @@
 
                                 </tfoot>
                             </table>
-                            <table id="detalles" class="table  table-striped table-bordered table-condensed table-hover ">
+                            <table id="detalles"
+                                class="table  table-striped table-bordered table-condensed table-hover ">
                                 <thead>
                                     <tr>
                                         <th colspan="3"> AGREGAR</th>
@@ -110,14 +118,7 @@
                                 <tbody>
 
                                     <tr>
-                                        <td>
 
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                        </td>
                                     </tr>
 
 

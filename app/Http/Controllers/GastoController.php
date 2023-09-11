@@ -11,6 +11,7 @@ use Carbon\Carbon;
 
 use App\Models\Detallegasto;
 use PhpParser\Node\Stmt\Return_;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 
 /**
  * Class GastoController
@@ -136,12 +137,13 @@ class GastoController extends Controller
         $detalle = Detallegasto::all()->where('gasto_id', '=', $id);
         $dato = $detalle->first();
         $query = $dato->becado->programa_id;
+        $prog = $dato->becado;
         $becados = Becado::all()->where('status', '=', 'Activo')->where('programa_id', '=', $query);
         $programas = Programa::all()->where('status', '=', 'activo');
 
         $total = $detalle->sum('Monto');
 
-        return view('gasto.edit', compact('gasto', 'becados', 'detalle', 'programas', 'total', 'query'));
+        return view('gasto.edit', compact('gasto', 'becados', 'detalle', 'programas', 'total', 'query', 'prog'));
     }
 
     /**
@@ -155,6 +157,10 @@ class GastoController extends Controller
     {
 
         request()->validate(gasto::$rules);
+
+        $gasto->fecha = $request->fecha;
+
+        $gasto->save();
         /*  $fecha = $request->get('fecha');
         $dia = Carbon::parse($request->get('fecha'))->Format('Y-m-d');
         $gasto->fecha = $dia; */
@@ -171,7 +177,9 @@ class GastoController extends Controller
         $becado_id = $request->get('becado_id');
         $Monto = $request->get('Monto');
         $cont = 0;
-        if ($cont > 0) {
+
+        if ($becado_id != '') {
+
             while ($cont < count($becado_id)) {
                 $detalle = new detallegasto();
                 $detalle->gasto_id = $gasto;

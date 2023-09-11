@@ -1,12 +1,11 @@
 <head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <style>
-    body {
-        margin-right: 3rem;
-    }
+        body {
+            margin-right: 3rem;
+        }
     </style>
 
 </head>
@@ -38,9 +37,11 @@
                 <table class="table table table-bordered table-striped">
                     <thead class="thead">
                         <tr>
-                            <th>Número</th>
+                            <th>#</th>
 
                             <th>Nombre del becado</th>
+                            <th>Carrera</th>
+                            <th>Universidad</th>
                             <th>Foto</th>
 
                         </tr>
@@ -53,10 +54,14 @@
                             <td>
                                 {{ $becado->nombre }} {{ $becado->ApellidoP }} {{ $becado->ApellidoM }}
                             </td>
-                            <div class="text-center">
-                                <img height="96px" width="72px" class="img-thumbnail"
-                                    src="http://localhost/becadosvilla//storage/app/images/{{$becado->Foto_path}}">
-                            </div>
+                            <td> {{ $becado->Carrera}}
+                            </td>
+                            <td> {{ $becado->Universidad }}
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <img height="96px" width="72px" class="img-thumbnail" src="http://localhost/becadosvilla//storage/app/images/{{$becado->Foto_path}}">
+                                </div>
 
                             </td>
 

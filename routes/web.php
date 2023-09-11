@@ -47,6 +47,7 @@ Route::resource('detallegastos', App\Http\Controllers\DetallegastoController::cl
 Route::get('/reportess/{id}', [App\Http\Controllers\ReporteController::class, 'servicio'])->name('servicio');
 Route::get('/programa/{id}', [App\Http\Controllers\ReporteController::class, 'programa'])->name('programa');
 Route::get('/programaf/{id}', [App\Http\Controllers\ReporteController::class, 'programaf'])->name('programaf');
+Route::get('/programafano/{id}', [App\Http\Controllers\ReporteController::class, 'programafano'])->name('programafano');
 Route::get('/estatus/{id}', [App\Http\Controllers\ReporteController::class, 'estatus'])->name('estatus');
 Route::get('/perfil/{id}', [App\Http\Controllers\ReporteController::class, 'perfil'])->name('perfil');
 Route::post('/graduados', [App\Http\Controllers\ReporteController::class, 'graduados'])->name('graduados');

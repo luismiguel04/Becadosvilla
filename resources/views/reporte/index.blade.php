@@ -34,11 +34,14 @@ Programa
                         <div class="col-sm-6">
 
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-label="Text input with dropdown button" value="Perfil de becario" disabled readonly>
-                                <button class=" btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">seleccione un becado</button>
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                    value="Perfil de becario" disabled readonly>
+                                <button class=" btn btn-outline-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">seleccione un becado</button>
                                 <ul class="dropdown-menu dropdown-menu-end  bg-white">
                                     @foreach ($becados as $becado)
-                                    <li><a class="dropdown-item" target="_blank" href="{{ route('perfil',$becado->id) }}">
+                                    <li><a class="dropdown-item" target="_blank"
+                                            href="{{ route('perfil',$becado->id) }}">
                                             {{ $becado->nombre }}</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -49,12 +52,15 @@ Programa
                         <div class="col-sm-6">
 
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-label="Text input with dropdown button" value="Reporte de becados por programa" disabled readonly>
-                                <button class=" btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">seleccione por
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                    value="Reporte de becados por programa" disabled readonly>
+                                <button class=" btn btn-outline-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">seleccione por
                                     programa</button>
                                 <ul class="dropdown-menu dropdown-menu-end  bg-white">
                                     @foreach ($programas as $item)
-                                    <li><a class="dropdown-item" target="_blank" href="{{ route('programa',$item->id) }}">
+                                    <li><a class="dropdown-item" target="_blank"
+                                            href="{{ route('programa',$item->id) }}">
                                             {{ $item->nombre }}</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -65,12 +71,15 @@ Programa
                         <div class="col-sm-6">
 
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-label="Text input with dropdown button" value="Reporte de becados por lugar de servicios" disabled readonly>
-                                <button class=" btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">seleccione un lugar de servicio
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                    value="Reporte de becados por lugar de servicios" disabled readonly>
+                                <button class=" btn btn-outline-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">seleccione un lugar de servicio
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end  bg-white">
                                     @foreach ($servicios as $item)
-                                    <li><a class="dropdown-item" target="_blank" href="{{ route('servicio',$item->id) }}">
+                                    <li><a class="dropdown-item" target="_blank"
+                                            href="{{ route('servicio',$item->id) }}">
                                             {{ $item->nombre }}</a></li>
                                     <li>
                                         <hr class=" dropdown-divider">
@@ -78,15 +87,19 @@ Programa
                                     @endforeach
                             </div>
                         </div>
+
                         <div class="col-sm-6">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-label="Text input with dropdown button" value="Reporte de becados por programa con foto" disabled readonly>
-                                <button class=" btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">seleccione por
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                    value="Reporte de becados por programa con foto" disabled readonly>
+                                <button class=" btn btn-outline-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">seleccione por
                                     programa
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end  bg-white">
                                     @foreach ($programas as $item)
-                                    <li><a class="dropdown-item" target="_blank" href="{{ route('programaf',$item->id) }}">
+                                    <li><a class="dropdown-item" target="_blank"
+                                            href="{{ route('programaf',$item->id) }}">
                                             {{ $item->nombre }}</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -94,11 +107,14 @@ Programa
                                     @endforeach
                             </div>
                         </div>
+
                         <div class="col-sm-6">
 
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-label="Text input with dropdown button" value="Reporte de becados por estatus" disabled readonly>
-                                <button class=" btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">seleccione un estatus
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                    value="Reporte de becados por estatus" disabled readonly>
+                                <button class=" btn btn-outline-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">seleccione un estatus
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end  bg-white">
                                     @foreach ($estatus as $item)
@@ -111,13 +127,35 @@ Programa
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <form method="post" target="_blank" action="{{ route('graduados') }}" role="form" enctype="multipart/form-data">
+
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                    value="Reporte de becados por programa general" disabled readonly>
+                                <button class=" btn btn-outline-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">seleccione por
+                                    programa</button>
+                                <ul class="dropdown-menu dropdown-menu-end  bg-white">
+                                    @foreach ($programas as $item)
+                                    <li><a class="dropdown-item" target="_blank"
+                                            href="{{ route('programafano',$item->id) }}">
+                                            {{ $item->nombre }}</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    @endforeach
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <form method="post" target="_blank" action="{{ route('graduados') }}" role="form"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="input-group mb-3">
 
 
-                                    <input type="text" class="form-control" aria-label="Text input with input" value="Reporte de graduados por año" disabled readonly>
-                                    <input type="number" min="2019" value="2019" placeholder="escriba un año " name="id" id="id">
+                                    <input type="text" class="form-control" aria-label="Text input with input"
+                                        value="Reporte de graduados por año" disabled readonly>
+                                    <input type="number" min="2019" value="2019" placeholder="escriba un año " name="id"
+                                        id="id">
                                     <button class="btn btn-outline-primary" type="submit">
                                         Generar
                                     </button>
@@ -125,13 +163,16 @@ Programa
                             </form>
                         </div>
                         <div class="col-sm-6">
-                            <form method="post" target="_blank" action="{{ route('anoiniciobeca') }}" role="form" enctype="multipart/form-data">
+                            <form method="post" target="_blank" action="{{ route('anoiniciobeca') }}" role="form"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="input-group mb-3">
 
 
-                                    <input type="text" class="form-control" aria-label="Text input with input" value="Reporte de becados por año de entrada en la beca" disabled readonly>
-                                    <input type="number" min="2019" value="2019" placeholder="escriba un año " name="id" id="id">
+                                    <input type="text" class="form-control" aria-label="Text input with input"
+                                        value="Reporte de becados por año de entrada en la beca" disabled readonly>
+                                    <input type="number" min="2019" value="2019" placeholder="escriba un año " name="id"
+                                        id="id">
                                     <button class="btn btn-outline-primary" type="submit">
                                         Generar
                                     </button>
@@ -141,12 +182,15 @@ Programa
                         <div class="col-sm-6">
 
 
-                            <form method="post" target="_blank" action="{{ route('graduadosf') }}" role="form" enctype="multipart/form-data">
+                            <form method="post" target="_blank" action="{{ route('graduadosf') }}" role="form"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="input-group mb-3">
 
-                                    <input type="text" class="form-control" aria-label="Text input with input" value="Reporte de graduados por año con foto" disabled readonly>
-                                    <input type="number" min="2019" value="2019" placeholder="escriba un año " name="id" id="id">
+                                    <input type="text" class="form-control" aria-label="Text input with input"
+                                        value="Reporte de graduados por año con foto" disabled readonly>
+                                    <input type="number" min="2019" value="2019" placeholder="escriba un año " name="id"
+                                        id="id">
                                     <button class="btn btn-outline-primary" type="submit">
                                         Generar
                                     </button>
@@ -158,7 +202,9 @@ Programa
 
 
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" value="Listado de becados con fecha de nacimiento" disabled readonly>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button"
+                                    value="Listado de becados con fecha de nacimiento" disabled readonly>
                                 <button type="button" class="btn btn-outline-primary">
                                     <a class="dropdown-item" target="_blank" href="{{ route('fechan')}}">Generar</a>
                                 </button>
@@ -188,7 +234,8 @@ Programa
 
                                             @endforeach
                                         </select>
-                                        <input type="number" value="2022" min="2019" placeholder="escriba un año " name="ano" id="ano">
+                                        <input type="number" value="2022" min="2019" placeholder="escriba un año "
+                                            name="ano" id="ano">
                                         <button type="submit" target="_blank" class="btn btn-primary">
                                             {{ __('Generar') }}
                                         </button>

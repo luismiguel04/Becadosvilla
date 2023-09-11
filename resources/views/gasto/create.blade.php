@@ -14,7 +14,8 @@
             <div class="card card-default">
                 <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                     <span class="card-title">{{ __('Crear Solicitud de dinero por programa') }} </span>
-                    <a class="btn  btn btn-primary btn-sm float-right" data-placement="left" href="{{ route('gastos.index') }}">
+                    <a class="btn  btn btn-primary btn-sm float-right" data-placement="left"
+                        href="{{ route('gastos.index') }}">
                         {{ __('Regresar') }}</a>
                 </div>
                 <div class="card-body">
@@ -35,78 +36,91 @@
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> -->
 
 <script>
-    $(document).ready(function() {
-        $('#bt_add').click(function() {
-            agregar();
-        });
+$(document).ready(function() {
+    $('#bt_add').click(function() {
+        agregar();
     });
-    query = 0;
-    var cont = 0;
-    total = 0;
-    subtotal = [];
-    $("#guardar").hide();
-    $("#fbecado").hide();
-    $("#fmonto").hide();
-    $("#ffecha").hide();
-    $("#fagregar").hide();
+});
+query = 0;
+var cont = 0;
+total = 0;
+subtotal = [];
+$("#guardar").hide();
 
-    function agregar() {
-        pidbecado = $("#pidbecado").val();
-        becado = $("#pidbecado option:selected").text();
-        Monto = $("#PMonto").val();
 
-        subtotal[cont] = (Monto * 1);
-        total = total + subtotal[cont];
+function agregar() {
+    pidbecado = $("#pidbecado").val();
+    becado = $("#pidbecado option:selected").text();
+    Monto = $("#PMonto").val();
 
-        var fila = '<tr class="selected" id="fila' + cont +
-            '"> <td><button type="button"  class="btn btn-warning" onclick="eliminar(' +
-            cont + ');">x</button></td><td><input type="hidden" id="becado_id" name="becado_id[]" value=' +
-            pidbecado +
-            '>' + becado +
-            '</td><td><input type="number" name="Monto[]" id="Monto" value=' + Monto + ' multiple ></td></tr>';
-        cont++;
+    subtotal[cont] = (Monto * 1);
+    total = total + subtotal[cont];
+
+    var fila = '<tr class="selected" id="fila' + cont +
+        '"> <td><button type="button"  class="btn btn-warning" onclick="eliminar(' +
+        cont + ');">x</button></td><td><input type="hidden" id="becado_id" name="becado_id[]" value=' +
+        pidbecado +
+        '>' + becado +
+        '</td><td><input type="number" name="Monto[]" id="Monto" value=' + Monto + ' multiple ></td></tr>';
+    cont++;
 
 
 
-        limpiar();
-        $("#pidbecado").focus();
-        $("#total").html("$ MXN " + total);
-        evaluar();
-        $('#detalles').append(fila);
+    limpiar();
+    $("#pidbecado").focus();
+    $("#total").html("$ MXN " + total);
+    evaluar();
+    $('#detalles').append(fila);
 
 
-        console.log(becado_id);
+    console.log(becado_id);
 
+}
+
+function limpiar() {
+    $("#PMonto").val('');
+
+}
+
+function evaluar() {
+    if (total > 0) {
+        $("#guardar").show();
+    } else {
+        $("#guardar").hide();
     }
 
-    function limpiar() {
-        $("#PMonto").val('');
+}
 
-    }
+function eliminar(index) {
+    total = total - subtotal[index];
+    $("#total").html("$ MXN " + total);
+    $("#fila" + index).remove();
+    evaluar();
+}
 
-    function evaluar() {
-        if (total > 0) {
-            $("#guardar").show();
-        } else {
-            $("#guardar").hide();
-        }
+/* $(document).ready(function() {
+    (function() {
+        mostrar();
+    });
+}); */
+/*    window.onload = function() {
+       if (query > 0) {
+           $("#fbecado").show();
+           $("#fmonto").show();
+           $("#ffecha").show();
+           $("#fagregar").show();
+       } else {
+           $("#fbecado").hide();
+           $("#fmonto").hide();
+           $("#ffecha").hide();
+           $("#fagregar").hide();
 
-    }
-
-    function eliminar(index) {
-        total = total - subtotal[index];
-        $("#total").html("$ MXN " + total);
-        $("#fila" + index).remove();
-        evaluar();
-    }
-
-    /* $(document).ready(function() {
-        (function() {
-            mostrar();
-        });
-    }); */
-    window.onload = function() {
-        if (query > 0) {
+       }
+   } */
+/* 
+    function mostrar() {
+        console.log($query);
+        if ($query = 0) {
             $("#fbecado").show();
             $("#fmonto").show();
             $("#ffecha").show();
@@ -118,23 +132,7 @@
             $("#fagregar").hide();
 
         }
-    }
-    /* 
-        function mostrar() {
-            console.log($query);
-            if ($query = 0) {
-                $("#fbecado").show();
-                $("#fmonto").show();
-                $("#ffecha").show();
-                $("#fagregar").show();
-            } else {
-                $("#fbecado").hide();
-                $("#fmonto").hide();
-                $("#ffecha").hide();
-                $("#fagregar").hide();
-
-            }
-        } */
+    } */
 </script>
 
 

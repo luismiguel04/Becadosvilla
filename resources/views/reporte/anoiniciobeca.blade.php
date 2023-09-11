@@ -1,12 +1,11 @@
 <head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <style>
-    body {
-        margin-right: 3rem;
-    }
+        body {
+            margin-right: 3rem;
+        }
     </style>
 
 </head>
@@ -65,7 +64,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th COLSPAN="2" scope="row" style="text-align:center;"> Total de becados {{$becadosc}}
+                                <th COLSPAN="3" scope="row" style="text-align:center;"> Total de becados {{$becadosc}}
                                 </th>
 
 

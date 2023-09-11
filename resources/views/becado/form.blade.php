@@ -101,12 +101,12 @@
 
             <div class="col-sm-2">
                 <div class="form-group">
-                    <label>{{ __('Número de Hermanos.') }}</label>
+                    <label>{{ __('Número de Hermanos') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('NumHermanos') ? ' has-danger' : '' }}">
                             <input class="form-control{{ $errors->has('NumHermanos') ? ' is-invalid' : '' }}"
                                 name="NumHermanos" id="input-NumHermanos" type="number"
-                                placeholder="{{ __('Año de Entrada a Villa') }}"
+                                placeholder="{{ __('Número de Hermanos') }}"
                                 value="{{ old('NumHermanos',$becado->NumHermanos) }}" min="0" max=15 required />
                             @if ($errors->has('NumHermanos'))
                             <span id="NumHermanos-error" class="error text-danger"
@@ -125,7 +125,7 @@
             </div>
             <div class="col-sm-2">
                 <div class="form-group">
-                    <label>{{ __('Año de Entrada a Villa.') }}</label>
+                    <label>{{ __('Año de Entrada a Villa') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('AnoEntradaVilla') ? ' has-danger' : '' }}">
                             <input class="form-control{{ $errors->has('AnoEntradaVilla') ? ' is-invalid' : '' }}"
@@ -253,7 +253,8 @@
                 <div class="mb-3">
                     {{ Form::label('subir foto del becado') }}
 
-                    <input class="form-control" type="file" name="Foto_path" id="Foto_path" class="hidden">
+                    <input class="form-control" type="file" name="Foto_path" id="Foto_path" accept=".jpg,.png,.jpeg"
+                        class="hidden">
 
                 </div>
             </div>
