@@ -15,362 +15,359 @@
 
     <!-- Styles -->
     <style>
-    /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
-    *,
-    ::after,
+        /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
+        *,
+        ::after,
 
 
 
-    /* TIPO DE LETRA Y TAMAÑO */
-    html {
+        /* TIPO DE LETRA Y TAMAÑO */
+        html {
 
-        text-align: center;
-        line-height: 1.5;
-        -webkit-text-size-adjust: 100%;
-        -moz-tab-size: 2;
-        tab-size: 2;
-        font-weight: bold;
-        /* font-family: Figtree, sans-serif; */
-        /*   font-family: cursive; */
-        font-feature-settings: normal;
-
-
-    }
-
-    body {
-        margin: 0;
-        line-height: inherit;
+            text-align: center;
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 2;
+            tab-size: 2;
+            font-weight: bold;
+            /* font-family: Figtree, sans-serif; */
+            /*   font-family: cursive; */
+            font-feature-settings: normal;
 
 
-    }
+        }
 
-    hr {
-        height: 0;
-        color: inherit;
-        border-top-width: 1px
-    }
+        body {
+            margin: 0;
+            line-height: inherit;
 
 
+        }
+
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px
+        }
 
 
 
-    .-mt-px {
-        margin-top: -1px
-    }
 
-    .mr-1 {
-        margin-right: 0.25rem
-    }
 
-    .flex {
-        display: inline-block
-    }
+        .-mt-px {
+            margin-top: -1px
+        }
 
-    .inline-flex {
-        display: inline-flex
-    }
+        .mr-1 {
+            margin-right: 0.25rem
+        }
 
-    .grid {
-        display: grid
-    }
+        .flex {
+            display: inline-block
+        }
 
-    .h-16 {
-        height: 4rem
-    }
+        .inline-flex {
+            display: inline-flex
+        }
 
-    .h-7 {
-        height: 1.75rem
-    }
+        .grid {
+            display: grid
+        }
 
-    .h-6 {
-        height: 1.5rem
-    }
+        .h-16 {
+            height: 4rem
+        }
 
-    .h-5 {
-        height: 1.25rem
-    }
+        .h-7 {
+            height: 1.75rem
+        }
 
-    .min-h-screen {
-        min-height: 100vh
-    }
+        .h-6 {
+            height: 1.5rem
+        }
 
-    .w-auto {
-        width: auto
-    }
+        .h-5 {
+            height: 1.25rem
+        }
 
-    .w-16 {
-        width: 4rem
-    }
+        .min-h-screen {
+            min-height: 100vh
+        }
 
-    .w-7 {
-        width: 1.75rem
-    }
+        .w-auto {
+            width: auto
+        }
 
-    .w-6 {
-        width: 1.5rem
-    }
+        .w-16 {
+            width: 4rem
+        }
 
-    .w-5 {
-        width: 1.25rem
-    }
+        .w-7 {
+            width: 1.75rem
+        }
 
-    .max-w-7xl {
-        max-width: 80rem
-    }
+        .w-6 {
+            width: 1.5rem
+        }
 
-    .shrink-0 {
-        flex-shrink: 0
-    }
+        .w-5 {
+            width: 1.25rem
+        }
 
-    .scale-100 {
-        --tw-scale-x: 1;
-        --tw-scale-y: 1;
-        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-    }
+        .max-w-7xl {
+            max-width: 80rem
+        }
 
-    .grid-cols-1 {
-        grid-template-columns: repeat(1, minmax(0, 1fr))
-    }
+        .shrink-0 {
+            flex-shrink: 0
+        }
 
-    .items-center {
-        align-items: center
-    }
+        .scale-100 {
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+        }
 
-    .justify-center {
-        justify-content: center
-    }
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+        }
 
-    .gap-6 {
-        gap: 1.5rem
-    }
+        .items-center {
+            align-items: center
+        }
 
-    .gap-4 {
-        gap: 1rem
-    }
+        .justify-center {
+            justify-content: center
+        }
 
-    .self-center {
-        align-self: center
-    }
+        .gap-6 {
+            gap: 1.5rem
+        }
 
-    .rounded-lg {
-        border-radius: 0.5rem
-    }
+        .gap-4 {
+            gap: 1rem
+        }
 
-    .rounded-full {
-        border-radius: 9999px
-    }
+        .self-center {
+            align-self: center
+        }
 
-    /*  .bg-gray-100 {
+        .rounded-lg {
+            border-radius: 0.5rem
+        }
+
+        .rounded-full {
+            border-radius: 9999px
+        }
+
+        /*  .bg-gray-100 {
         --tw-bg-opacity: 1;
         background-color: rgb(243 244 246 / var(--tw-bg-opacity))
     } */
 
 
-    /* PADING */
+        /* PADING */
 
-    .p-6 {
-        padding: 1.5rem
-    }
-
-    .px-6 {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-
-    .text-center {
-        text-align: center
-    }
-
-    .text-right {
-        text-align: right
-    }
-
-    .text-xl {
-        font-size: 1.25rem;
-        line-height: 1.75rem
-    }
-
-    .text-sm {
-        font-size: 0.875rem;
-        line-height: 1.25rem
-    }
-
-    .font-semibold {
-        font-weight: 600
-    }
-
-    .leading-relaxed {
-        line-height: 1.625
-    }
-
-
-    .focus\:rounded-sm:focus {
-        border-radius: 0.125rem
-    }
-
-    .focus\:outline:focus {
-        outline-style: solid
-    }
-
-    .focus\:outline-2:focus {
-        outline-width: 2px
-    }
-
-    .focus\:outline-red-500:focus {
-        outline-color: #ffffff
-    }
-
-    .h-1 {
-
-        text-align: center;
-        justify-content: center;
-        line-height: 3;
-        -webkit-text-size-adjust: 50%;
-        -moz-tab-size: 8;
-        tab-size: 8;
-
-        padding: 2rem;
-
-    }
-
-
-
-
-
-    @media (prefers-reduced-motion: no-preference) {
-        .motion-safe\:hover\:scale-\[1\.01\]:hover {
-            --tw-scale-x: 1.01;
-            --tw-scale-y: 1.01;
-            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-        }
-    }
-
-
-
-    @media (min-width: 640px) {
-        .sm\:fixed {
-            position: fixed
+        .p-6 {
+            padding: 1.5rem
         }
 
-        .sm\:top-0 {
-            top: 0px
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
 
-        .sm\:right-0 {
-            right: 0px
-        }
-
-        .sm\:ml-0 {
-            margin-left: 0px
-        }
-
-        .sm\:flex {
-            display: flex
-        }
-
-        .sm\:items-center {
-            align-items: top
-        }
-
-        .sm\:justify-center {
-            justify-content: left
-        }
-
-        .sm\:justify-between {
-            justify-content: space-between
-        }
-
-        .sm\:text-left {
-            text-align: left
-        }
-
-        .sm\:text-right {
+        .text-center {
             text-align: center
         }
-    }
 
-    @media (min-width: 768px) {
-        .md\:grid-cols-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr))
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .lg\:gap-8 {
-            gap: 2rem
+        .text-right {
+            text-align: right
         }
 
-        .lg\:p-8 {
-            padding: 2rem
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem
         }
-    }
 
-    * {
-        margin: 0;
-        padding: 0;
-    }
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem
+        }
 
-    .caja {
+        .font-semibold {
+            font-weight: 600
+        }
 
-        flex-flow: column wrap;
-        justify-content: left !important;
-        align-items: center;
+        .leading-relaxed {
+            line-height: 1.625
+        }
 
 
-    }
+        .focus\:rounded-sm:focus {
+            border-radius: 0.125rem
+        }
 
-    .box {
-        width: auto;
-        height: 100vh;
+        .focus\:outline:focus {
+            outline-style: solid
+        }
 
-        overflow: hidden;
-        /*  padding-right: 10rem; */
-    }
+        .focus\:outline-2:focus {
+            outline-width: 2px
+        }
 
-    .box img {
-        width: 100%;
-        height: 100%;
-    }
+        .focus\:outline-red-500:focus {
+            outline-color: #ffffff
+        }
 
-    @supports(object-fit: cover) {
+        .h-1 {
+
+            text-align: center;
+            justify-content: center;
+            line-height: 3;
+            -webkit-text-size-adjust: 50%;
+            -moz-tab-size: 8;
+            tab-size: 8;
+
+            padding: 2rem;
+
+        }
+
+
+
+
+
+        @media (prefers-reduced-motion: no-preference) {
+            .motion-safe\:hover\:scale-\[1\.01\]:hover {
+                --tw-scale-x: 1.01;
+                --tw-scale-y: 1.01;
+                transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+            }
+        }
+
+
+
+        @media (min-width: 640px) {
+            .sm\:fixed {
+                position: fixed
+            }
+
+            .sm\:top-0 {
+                top: 0px
+            }
+
+            .sm\:right-0 {
+                right: 0px
+            }
+
+            .sm\:ml-0 {
+                margin-left: 0px
+            }
+
+            .sm\:flex {
+                display: flex
+            }
+
+            .sm\:items-center {
+                align-items: top
+            }
+
+            .sm\:justify-center {
+                justify-content: left
+            }
+
+            .sm\:justify-between {
+                justify-content: space-between
+            }
+
+            .sm\:text-left {
+                text-align: left
+            }
+
+            .sm\:text-right {
+                text-align: center
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:gap-8 {
+                gap: 2rem
+            }
+
+            .lg\:p-8 {
+                padding: 2rem
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .caja {
+
+            flex-flow: column wrap;
+            justify-content: left !important;
+            align-items: center;
+
+
+        }
+
+        .box {
+            width: auto;
+            height: 100vh;
+
+            overflow: hidden;
+            /*  padding-right: 10rem; */
+        }
+
         .box img {
+            width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center center;
         }
-    }
 
-    .title {
+        @supports(object-fit: cover) {
+            .box img {
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
 
-        padding-top: 20%;
-        text-align: center;
-        justify-content: center;
-        padding-right: 10%;
-        padding-left: 15%;
-        color: #0000FF;
-    }
+        .title {
 
-    .t {
-        font-size: 50px;
-        color: #000000;
-    }
+            padding-top: 20%;
+            text-align: center;
+            justify-content: center;
+            padding-right: 10%;
+            padding-left: 15%;
+            color: #0000FF;
+        }
 
-    .b {
-        font-size: 40px;
-        color: #303030;
-    }
+        .t {
+            font-size: 50px;
+            color: #000000;
+        }
+
+        .b {
+            font-size: 40px;
+            color: #303030;
+        }
     </style>
 </head>
 
 <body class="antialiased">
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
+    <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
         @if (Route::has('login'))
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
             @auth
-            <a href="{{ url('/dashboard') }}"
-                class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"><img
-                    src="http://localhost/becadosvilla/public/app/logovillavvv.png" width="70px"></a>
+            <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"><img src="{{ asset('/app/logovillavvv.png') }}" width="70px"></a>
             @else
             <a href=" {{ route('login') }}">Log
                 in</a>
@@ -384,7 +381,7 @@
         </div>
         @endif
         <div class="box">
-            <img src=" http://localhost/becadosvilla/public/app/fondo2.jpg" alt=" Cargando imagen...">
+            <img src=" {{ asset('/app/fondo2.jpg') }}" alt=" Cargando imagen...">
         </div>
 
         <div class="title" style="color:#000000;">
@@ -397,11 +394,12 @@
 
     </div>
 
-    <!--     <style>
+    <style>
         body {
-            background-image: linear-gradient(to right, #FFFFFF 0%, #7600A9 25%, #0000ff 65%, #FFFFFF 90%);
+            /*  background-image: linear-gradient(to right, #FFFFFF 0%, #7600A9 25%, #0000ff 65%, #FFFFFF 90%); */
+            background-color: #ffffff;
         }
-    </style> -->
+    </style>
 
 
 

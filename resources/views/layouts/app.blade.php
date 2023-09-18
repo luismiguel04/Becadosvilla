@@ -41,83 +41,6 @@
         <!--  navbar bg-body-tertiary fixed-top
         navbar navbar-expand-md navbar-light bg-white shadow-sm -->
 
-        <!--    <nav class="navbar navbar-expand-md navbar-light bg-white ">
-            <div class="container">
-                @yield('sinheader')
-                <a href="{{ url('/') }}" class="p6"><img
-                        src="http://localhost/becadosvilla/public/app/logovillavvv.jpeg" width="60px"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse bg-white" id="navbarSupportedContent">
-
-
-
-
-                    <ul class="navbar-nav me-auto">
-                        @auth
-
-                        <li class="navbar-brand">
-                            <a class="nav-link" href="{{ route('programas.index') }}">{{ __('Programas') }}</a>
-                        </li>
-                        <li class="navbar-brand">
-                            <a class="nav-link" href="{{ route('servicios.index') }}">{{ __('Servicios') }}</a>
-                        </li>
-                        <li class="navbar-brand">
-                            <a class="nav-link focus:outline-red-500"
-                                href="{{ route('becados.index') }}">{{ __('Becados') }}</a>
-                        </li>
-                        <li class="navbar-brand">
-                            <a class="nav-link" href="{{ route('gastos.index') }}">{{ __('Gastos') }}</a>
-                        </li>
-                        <li class="navbar-brand">
-                            <a class="nav-link" href="{{ route('reportes.index') }}">{{ __('Reportes') }}</a>
-                        </li>
-                        @endif
-                    </ul>
-
-
-
-                    <ul class="navbar-nav ms-auto">
-
-                        @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
         <nav class="navbar  navbar-light  bg-white  ">
             <div class="container-fluid">
 
@@ -127,14 +50,14 @@
                 </button>
                 <div>
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="http://localhost/becadosvilla/public/app/logovillavvv.jpeg" alt="Logo" width="60px" height="60px" class="d-inline-block align-text-center">
+                        <img src="{{ asset('/app/logovillavvv.jpeg') }}" alt="Logo" width="60px" height="60px" class="d-inline-block align-text-center">
                         Becados Villa de los Niños
                     </a>
 
                 </div>
                 <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <img src="http://localhost/becadosvilla/public/app/logovillavvv.jpeg" alt="Logo" width="60px" height="60px" class="d-inline-block align-text-center">
+                        <img src="{{ asset('/app/logovillavvv.jpeg') }}" alt="Logo" width="60px" height="60px" class="d-inline-block align-text-center">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>

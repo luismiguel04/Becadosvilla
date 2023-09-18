@@ -358,7 +358,58 @@ class ReporteController extends Controller
             'isHtml5ParserEnabled' => true,
             'isRemoteEnabled' => true
         ])->loadView('reporte.gastospormes', compact('i', 'programab', 'detalles', 'total', 'fecha', 'becados'))
-            ->setPaper('a4', 'landscape');
+            ->setPaper('legal', 'landscape');
+
+        //return $pdf->download('provedores.pdf');
+        return $pdf->stream('reporte programa.pdf');
+    }
+    public function gastoprogramaanual(Request $request)
+    {
+
+        $dompdf = new Dompdf();
+        $options = $dompdf->getOptions();
+        $options->setDefaultFont('Verdana');
+        $dompdf->setOptions($options);
+
+
+        $fecha = $request->get('fecha');
+        /*   $Mes = Carbon::parse($fecha)->Format('m'); */
+        /*  $ano = Carbon::parse($fecha)->Format('Y'); */
+
+        $becados = Becado::all();
+
+        $programa = $request->get('programa_id');
+        $programab = programa::find($programa);
+
+        /*  $grupos = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
+            ->leftJoin('becados', 'becados.id', '=', 'detallegastos.becado_id')
+            ->leftJoin('programas', 'programas.id', '=', 'becados.programa_id')
+
+
+            ->whereYear('gastos.fecha', $ano)
+            ->where('programas.id', $programa)
+            ->selectraw(' sum(Monto) as total , becado_id as id')->groupBy('becado_id')
+            ->get(); */
+
+        $detalles = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
+            ->leftJoin('becados', 'becados.id', '=', 'detallegastos.becado_id')
+            ->leftJoin('programas', 'programas.id', '=', 'becados.programa_id')
+            ->whereYear('gastos.fecha', $fecha)
+            ->where('programas.id', $programa)
+            ->select(Detallegasto::raw('(becado_id) as becado_id'), Detallegasto::raw('SUM(Monto) as total'))->groupBy('becado_id')
+            ->get();
+
+
+        $totalp = $detalles->sum('total');
+
+
+        $i = 0;
+
+        $pdf = PDF::setOptions([
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true
+        ])->loadView('reporte.gastoprogrmaanual', compact('i', 'programab', 'fecha', 'becados', 'detalles', 'totalp'))
+            ->setPaper('legal', 'landscape');
 
         //return $pdf->download('provedores.pdf');
         return $pdf->stream('reporte programa.pdf');

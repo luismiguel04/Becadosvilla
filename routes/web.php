@@ -2,6 +2,7 @@
 
 use GuzzleHttp\Middleware;
 use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
@@ -16,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 |
 */
 
+Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,10 +32,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('programas', App\Http\Controllers\ProgramaController::class)->Middleware('auth');
@@ -55,6 +54,7 @@ Route::post('/graduadosf', [App\Http\Controllers\ReporteController::class, 'grad
 Route::post('/anoiniciobeca', [App\Http\Controllers\ReporteController::class, 'anoiniciobeca'])->name('anoiniciobeca');
 Route::post('/gastosporano', [App\Http\Controllers\ReporteController::class, 'gastosporano'])->name('gastosporano');
 Route::post('/gastoprograma', [App\Http\Controllers\ReporteController::class, 'gastoprograma'])->name('gastoprograma');
+Route::post('/gastoprogramaanual', [App\Http\Controllers\ReporteController::class, 'gastoprogramaanual'])->name('gastoprogramaanual');
 
 
 Route::get('/fechan', [App\Http\Controllers\ReporteController::class, 'fechan'])->name('fechan');

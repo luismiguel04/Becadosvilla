@@ -73,42 +73,38 @@
                                 <tr>
                                     <th>
                                         <div class="border-3 border-primary  border-right ml-2 mr-3">
-                                            <!-- <div class="text-center "> -->
-
-                                            <img height="100px" width="80px" src="http://localhost/becadosvilla//storage/app/images/{{$becado->Foto_path}}" class="rounded-circle border border-gray border-5 mb-3  mr-3 border-right ">
-                                            <!--  </div> -->
+                                            <div>
+                                                <div class="sticky-top-end translate-middle W-100px">
+                                                    <label class=" rounded bg-primary border-primary border border-3 text-white  fw-bold w-100px">
+                                                        {{ ++$i }}
+                                                    </label>
+                                                </div>
+                                                <img height="100px" width="80px" src="http://localhost/becadosvilla//storage/app/images/{{$becado->Foto_path}}" class="rounded border border-gray border-5 mb-3  mr-3 border-right ">
+                                            </div>
                                         </div>
                                     </th>
                                     <td class="justify-content-center">
-                                        <div class="position-absolute top-0 start-0 translate-middle W-100px">
-                                            <label class=" rounded bg-primary border-primary border border-3 text-white  fw-bold w-100px">
-                                                {{ ++$i }}
-                                            </label>
-                                        </div>
 
-
-
-
-                                        <p class="text-center font-weight-bold"> {{ $becado->nombre }}
+                                        <p class="text-left font-weight-bold"> {{ $becado->nombre }}
                                             {{ $becado->ApellidoP }}
                                             {{ $becado->ApellidoM }}
                                         </p>
-                                        <p class="text-center font-italic font-weight-light"> BS: {{ $becado->Carrera}}
+                                        <p class="text-left  font-light"> BS: {{ $becado->Carrera}}
                                         </p>
-                                        <p class="text-center font-italic font-weight-light"> Year of graduation:
+                                        <p class="text-left  font-light"> Year of graduation:
                                             {{ \Carbon\Carbon::parse( $becado->Duracion)->Locale('us')->formatLocalized('%B %Y')}}
                                         </p>
-                                        <p class="text-center">{{ $becado->Universidad }}</p>
+                                        <p class="text-left">{{ $becado->Universidad }}</p>
                                         @if($becado->status == "Graduado")
-                                        <p class="text-center font-weight-bold text-primary">{{ $becado->status }}
+                                        <p class="text-left font-weight-bold text-primary">{{ $becado->status }}
                                             {{ \Carbon\Carbon::parse( $becado->AnodeGraduacion)->Locale('es')->formatLocalized('%Y')}}
                                         </p>
                                         @elseif ($becado->status == "Baja")
-                                        <p class="text-center font-weight-bold text-danger">{{ $becado->status }}
+                                        <p class="text-left font-weight-bold text-danger">{{ $becado->status }}
                                             {{ \Carbon\Carbon::parse( $becado->AnodeGraduacion)->Locale('es')->formatLocalized('%Y')}}
                                         </p>
                                         @else
-                                        <p class="text-center font-weight-bold text-success">{{ $becado->status }}
+                                        <p class="text-left font-weight-bold text-success">{{ $becado->status }}
 
                                         </p>
 
