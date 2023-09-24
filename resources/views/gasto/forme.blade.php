@@ -58,9 +58,9 @@
                             <br>
                             <table class="table  table-striped table-bordered table-condensed table-hover ">
                                 <thead>
-                                    <th style="background-color:#ff66FF">Opciones</th>
-                                    <th style="background-color:#ff66FF">Becado</th>
-                                    <th style="background-color:#ff66FF">Monto</th>
+                                    <th class="bg-success text-white text-center">Opciones</th>
+                                    <th class="bg-success text-white text-center">Becado</th>
+                                    <th class="bg-success text-white text-center">Monto</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($detalle as $detall)
@@ -111,9 +111,9 @@
                                     <tr>
                                         <th colspan="3"> AGREGAR</th>
                                     </tr>
-                                    <th style="background-color:#ff66FF">Opciones</th>
-                                    <th style="background-color:#ff66FF">Becado</th>
-                                    <th style="background-color:#ff66FF">Monto</th>
+                                    <th class="bg-success text-white text-center">Opciones</th>
+                                    <th class="bg-success text-white text-center">Becado</th>
+                                    <th class="bg-success text-white text-center">Monto</th>
                                 </thead>
                                 <tbody>
 

@@ -1,6 +1,7 @@
 <?php
 
 use GuzzleHttp\Middleware;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 |
 */
 
-Auth::routes(['verify' => true]);
+Auth::routes(['register' => true, 'verify' => true]);
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,7 +33,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->Middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('programas', App\Http\Controllers\ProgramaController::class)->Middleware('auth');

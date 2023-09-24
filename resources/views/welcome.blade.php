@@ -50,10 +50,6 @@
             border-top-width: 1px
         }
 
-
-
-
-
         .-mt-px {
             margin-top: -1px
         }
@@ -72,54 +68,6 @@
 
         .grid {
             display: grid
-        }
-
-        .h-16 {
-            height: 4rem
-        }
-
-        .h-7 {
-            height: 1.75rem
-        }
-
-        .h-6 {
-            height: 1.5rem
-        }
-
-        .h-5 {
-            height: 1.25rem
-        }
-
-        .min-h-screen {
-            min-height: 100vh
-        }
-
-        .w-auto {
-            width: auto
-        }
-
-        .w-16 {
-            width: 4rem
-        }
-
-        .w-7 {
-            width: 1.75rem
-        }
-
-        .w-6 {
-            width: 1.5rem
-        }
-
-        .w-5 {
-            width: 1.25rem
-        }
-
-        .max-w-7xl {
-            max-width: 80rem
-        }
-
-        .shrink-0 {
-            flex-shrink: 0
         }
 
         .scale-100 {
@@ -160,13 +108,7 @@
             border-radius: 9999px
         }
 
-        /*  .bg-gray-100 {
-        --tw-bg-opacity: 1;
-        background-color: rgb(243 244 246 / var(--tw-bg-opacity))
-    } */
 
-
-        /* PADING */
 
         .p-6 {
             padding: 1.5rem
@@ -208,17 +150,9 @@
             border-radius: 0.125rem
         }
 
-        .focus\:outline:focus {
-            outline-style: solid
-        }
 
-        .focus\:outline-2:focus {
-            outline-width: 2px
-        }
 
-        .focus\:outline-red-500:focus {
-            outline-color: #ffffff
-        }
+
 
         .h-1 {
 
@@ -363,11 +297,11 @@
 </head>
 
 <body class="antialiased">
-    <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
+    <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100  ">
         @if (Route::has('login'))
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
             @auth
-            <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"><img src="{{ asset('/app/logovillavvv.png') }}" width="70px"></a>
+            <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm "><img src="{{ asset('/app/logovillavvv.png') }}" width="70px"></a>
             @else
             <a href=" {{ route('login') }}">Log
                 in</a>

@@ -381,6 +381,24 @@ class ReporteController extends Controller
         $programa = $request->get('programa_id');
         $programab = programa::find($programa);
 
+        $fechap = $request->get('fechap');
+        $nombre = $request->get('nombre');
+        $begfod = $request->get('begfod');
+        $begfom = $request->get('begfom');
+        $addfod = $request->get('addfod');
+        $addfom = $request->get('addfom');
+        $interes = $request->get('interes');
+        $tc = $request->get('tc');
+
+        $begfomd = $begfom / $tc;
+        $addfomd = $addfom / $tc;
+
+        $TotalFound = $begfom + $addfom + $interes;
+        $TotalFoundD = $TotalFound / $tc;
+
+
+
+
         /*  $grupos = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
             ->leftJoin('becados', 'becados.id', '=', 'detallegastos.becado_id')
             ->leftJoin('programas', 'programas.id', '=', 'becados.programa_id')
@@ -401,15 +419,19 @@ class ReporteController extends Controller
 
 
         $totalp = $detalles->sum('total');
+        $totalD = $totalp / $tc;
 
+        $FundBalance = $TotalFound - $totalp;
+
+        $FundBalanceD = $FundBalance / $tc;
 
         $i = 0;
 
         $pdf = PDF::setOptions([
             'isHtml5ParserEnabled' => true,
             'isRemoteEnabled' => true
-        ])->loadView('reporte.gastoprogrmaanual', compact('i', 'programab', 'fecha', 'becados', 'detalles', 'totalp'))
-            ->setPaper('legal', 'landscape');
+        ])->loadView('reporte.gastoprogrmaanual', compact('i', 'FundBalanceD', 'FundBalance', 'programab', 'totalD', 'TotalFoundD', 'tc', 'addfomd', 'begfomd', 'TotalFound', 'fecha', 'interes', 'begfod', 'begfom', 'nombre', 'fechap', 'becados', 'detalles', 'addfod', 'addfom', 'totalp'))
+            ->setPaper('letter');
 
         //return $pdf->download('provedores.pdf');
         return $pdf->stream('reporte programa.pdf');
