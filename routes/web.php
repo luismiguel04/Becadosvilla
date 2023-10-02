@@ -44,6 +44,7 @@ Route::resource('documentos', App\Http\Controllers\DocumentosController::class)-
 Route::resource('reportes', App\Http\Controllers\ReporteController::class)->Middleware('auth');
 Route::resource('detallegastos', App\Http\Controllers\DetallegastoController::class)->Middleware('auth');
 
+Route::delete('documentose/{id}', [App\Http\Controllers\DocumentosController::class, 'eliminar'])->name('documentose');
 Route::get('/reportess/{id}', [App\Http\Controllers\ReporteController::class, 'servicio'])->name('servicio');
 Route::get('/programa/{id}', [App\Http\Controllers\ReporteController::class, 'programa'])->name('programa');
 Route::get('/programaf/{id}', [App\Http\Controllers\ReporteController::class, 'programaf'])->name('programaf');

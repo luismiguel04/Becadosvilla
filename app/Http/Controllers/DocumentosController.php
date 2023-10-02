@@ -55,4 +55,12 @@ class DocumentosController extends Controller
             return back();
         }
     }
+
+    public function eliminar($id)
+    {
+        $documento = documentos::find($id)->delete();
+
+        return redirect()->route('becados.index')
+            ->with('success', 'Becado deleted successfully');
+    }
 }

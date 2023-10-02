@@ -290,9 +290,13 @@
                                                 <th>Nombre del archivo</th>
                                                 <th>Vista Previa</th>
 
+                                                <th>Ver
+
+                                                </th>
                                                 <th>
 
                                                 </th>
+                                                <th>Eliminar</th>
                                             </tr>
                                             @foreach ($documentos as $documento)
                                             <tr>
@@ -334,7 +338,19 @@
                                                 </th>
                                                 <th><a target="_blank"
                                                         href="http://localhost/becadosvilla/storage/app/documentos/{{$documento->Foto_path}}">Ver</a>
+
                                                 <th>
+                                                <th>
+
+                                                    <form action="{{ route('documentose',$documento->id) }}"
+                                                        class="formEliminar" method="POST">
+
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                                class="fa fa-fw fa-trash"></i> </button>
+                                                    </form>
+                                                </th>
                                             </tr>
 
                                             @endforeach
