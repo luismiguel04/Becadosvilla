@@ -370,6 +370,40 @@
         </div>
     </div>
     </div>
+
+    <script>
+    (function() {
+        'use strict'
+        var forms = document.querySelectorAll('.formEliminar')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+
+                    event.preventDefault()
+                    event.stopPropagation()
+                    Swal.fire({
+                        title: 'Eliminar documento',
+                        text: "Esta seguro de eliminar el docuemento seleccionado!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, borrar el documento!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                            Swal.fire(
+                                'Borrado!',
+                                'El documento ha sido borrado exitosamente.',
+                                'success'
+                            )
+                        }
+                    })
+                }, false)
+            })
+    })()
+    </script>
     </div>
 </section>
 @endsection

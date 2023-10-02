@@ -60,7 +60,7 @@ class DocumentosController extends Controller
     {
         $documento = documentos::find($id)->delete();
 
-        return redirect()->route('becados.index')
-            ->with('success', 'Becado deleted successfully');
+        return back()
+            ->with('success', 'Documento eliminado correctamente');
     }
 }
