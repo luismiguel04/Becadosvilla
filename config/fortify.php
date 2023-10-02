@@ -130,7 +130,7 @@ return [
     | these features or you can even remove all of these if you need to.
     |
     */
-
+    //cambios en la verificacions del correo
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
