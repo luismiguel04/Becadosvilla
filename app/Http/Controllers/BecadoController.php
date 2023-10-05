@@ -7,7 +7,7 @@ use DB;
 use App\Models\Becado;
 use App\Models\Programa;
 use App\Models\Servicio;
-use App\Models\becadosedad;
+
 use App\Models\documentos;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
@@ -54,8 +54,13 @@ class BecadoController extends Controller
         $date = date('Y-m-d');
 
         $fechaa = Carbon::parse($date);
+        //$becadosc = Becado::all()->groupBy('status')->count();
+        $becadost = Becado::pluck('status')->count();
+        $becadosc = Becado::select('status', Becado::raw('count(*) as total'))
+            ->groupBy('status')
+            ->get();
 
-        return view('becado.index', compact('becados', 'fechaa'))
+        return view('becado.index', compact('becados', 'fechaa', 'becadost', 'becadosc'))
             ->with('i', (request()->input('page', 1) - 1) * $becados->perPage());
     }
 
