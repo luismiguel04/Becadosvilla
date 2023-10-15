@@ -55,6 +55,7 @@ Route::post('/graduados', [App\Http\Controllers\ReporteController::class, 'gradu
 Route::post('/graduadosf', [App\Http\Controllers\ReporteController::class, 'graduadosf'])->name('graduadosf');
 Route::post('/anoiniciobeca', [App\Http\Controllers\ReporteController::class, 'anoiniciobeca'])->name('anoiniciobeca');
 Route::post('/gastosporano', [App\Http\Controllers\ReporteController::class, 'gastosporano'])->name('gastosporano');
+Route::post('/gastoacumulado', [App\Http\Controllers\ReporteController::class, 'gastoacumulado'])->name('gastoacumulado');
 Route::post('/gastoprograma', [App\Http\Controllers\ReporteController::class, 'gastoprograma'])->name('gastoprograma');
 Route::post('/gastoprogramaanual', [App\Http\Controllers\ReporteController::class, 'gastoprogramaanual'])->name('gastoprogramaanual');
 

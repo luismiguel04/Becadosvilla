@@ -26,9 +26,12 @@
                     <label>{{ __('Fecha de nacimiento') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('fecha') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" name="fecha" id="input-fecha" type="date" placeholder="{{ __('Fecha de nacimiento') }}" value="{{ old('fecha',$becado->fecha) }}" required />
+                            <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" name="fecha"
+                                id="input-fecha" type="date" placeholder="{{ __('Fecha de nacimiento') }}"
+                                value="{{ old('fecha',$becado->fecha) }}" required />
                             @if ($errors->has('fecha'))
-                            <span id="fecha-error" class="error text-danger" for="input-fecha">{{ $errors->first('fecha') }}</span>
+                            <span id="fecha-error" class="error text-danger"
+                                for="input-fecha">{{ $errors->first('fecha') }}</span>
                             @endif
                         </div>
                     </div>
@@ -70,9 +73,12 @@
                     <label>{{ __('Correo Electrónico') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('Correo') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('Correo') ? ' is-invalid' : '' }}" name="Correo" id="input-Correo" type="email" placeholder="{{ __('Correo electrónico') }}" value="{{ old('Correo',$becado->Correo) }}" required />
+                            <input class="form-control{{ $errors->has('Correo') ? ' is-invalid' : '' }}" name="Correo"
+                                id="input-Correo" type="email" placeholder="{{ __('Correo electrónico') }}"
+                                value="{{ old('Correo',$becado->Correo) }}" required />
                             @if ($errors->has('Correo'))
-                            <span id="Correo-error" class="error text-danger" for="input-Correo">{{ $errors->first('Correo') }}</span>
+                            <span id="Correo-error" class="error text-danger"
+                                for="input-Correo">{{ $errors->first('Correo') }}</span>
                             @endif
                         </div>
                     </div>
@@ -98,9 +104,13 @@
                     <label>{{ __('Número de Hermanos') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('NumHermanos') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('NumHermanos') ? ' is-invalid' : '' }}" name="NumHermanos" id="input-NumHermanos" type="number" placeholder="{{ __('Número de Hermanos') }}" value="{{ old('NumHermanos',$becado->NumHermanos) }}" min="0" max=15 required />
+                            <input class="form-control{{ $errors->has('NumHermanos') ? ' is-invalid' : '' }}"
+                                name="NumHermanos" id="input-NumHermanos" type="number"
+                                placeholder="{{ __('Número de Hermanos') }}"
+                                value="{{ old('NumHermanos',$becado->NumHermanos) }}" min="0" max=15 required />
                             @if ($errors->has('NumHermanos'))
-                            <span id="NumHermanos-error" class="error text-danger" for="input-NumHermanos">{{ $errors->first('NumHermanos') }}</span>
+                            <span id="NumHermanos-error" class="error text-danger"
+                                for="input-NumHermanos">{{ $errors->first('NumHermanos') }}</span>
                             @endif
                         </div>
                     </div>
@@ -118,9 +128,14 @@
                     <label>{{ __('Año de Entrada a Villa') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('AnoEntradaVilla') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('AnoEntradaVilla') ? ' is-invalid' : '' }}" name="AnoEntradaVilla" id="input-AnoEntradaVilla" type="number" placeholder="{{ __('Año de Entrada a Villa') }}" value="{{ old('AnoEntradaVilla',$becado->AnoEntradaVilla) }}" star="2000" min="1998" required />
+                            <input class="form-control{{ $errors->has('AnoEntradaVilla') ? ' is-invalid' : '' }}"
+                                name="AnoEntradaVilla" id="input-AnoEntradaVilla" type="number"
+                                placeholder="{{ __('Año de Entrada a Villa') }}"
+                                value="{{ old('AnoEntradaVilla',$becado->AnoEntradaVilla) }}" star="2000" min="1990"
+                                required />
                             @if ($errors->has('AnoEntradaVilla'))
-                            <span id="AnoEntradaVilla-error" class="error text-danger" for="input-AnoEntradaVilla">{{ $errors->first('AnoEntradaVilla') }}</span>
+                            <span id="AnoEntradaVilla-error" class="error text-danger"
+                                for="input-AnoEntradaVilla">{{ $errors->first('AnoEntradaVilla') }}</span>
                             @endif
                         </div>
                     </div>
@@ -131,9 +146,13 @@
                     <label>{{ __('Graduación secundaria') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('AnoGradSec') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('AnoGradSec') ? ' is-invalid' : '' }}" name="AnoGradSec" id="input-AnoGradSec" type="number" placeholder="{{ __('Año de Graduación de secundaria') }}" value="{{ old('AnoGradSec',$becado->AnoGradSec) }}" star="2000" min="1998" required />
+                            <input class="form-control{{ $errors->has('AnoGradSec') ? ' is-invalid' : '' }}"
+                                name="AnoGradSec" id="input-AnoGradSec" type="number"
+                                placeholder="{{ __('Año de Graduación de secundaria') }}"
+                                value="{{ old('AnoGradSec',$becado->AnoGradSec) }}" star="2000" min="1990" required />
                             @if ($errors->has('AnoGradSec'))
-                            <span id="AnoGradSec-error" class="error text-danger" for="input-AnoGradSec">{{ $errors->first('AnoGradSec') }}</span>
+                            <span id="AnoGradSec-error" class="error text-danger"
+                                for="input-AnoGradSec">{{ $errors->first('AnoGradSec') }}</span>
                             @endif
                         </div>
                     </div>
@@ -144,9 +163,13 @@
                     <label>{{ __('Año de Graduación de bachillerato') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('AnoGradBach') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('AnoGradBach') ? ' is-invalid' : '' }}" name="AnoGradBach" id="input-AnoGradBach" type="number" placeholder="{{ __('Año de Graduación de bachillerato') }}" value="{{ old('AnoGradBach',$becado->AnoGradBach) }}" star="2000" min="1998" required />
+                            <input class="form-control{{ $errors->has('AnoGradBach') ? ' is-invalid' : '' }}"
+                                name="AnoGradBach" id="input-AnoGradBach" type="number"
+                                placeholder="{{ __('Año de Graduación de bachillerato') }}"
+                                value="{{ old('AnoGradBach',$becado->AnoGradBach) }}" star="2000" min="1990" required />
                             @if ($errors->has('AnoGradBach'))
-                            <span id="AnoGradBach-error" class="error text-danger" for="input-AnoGradBach">{{ $errors->first('AnoGradBach') }}</span>
+                            <span id="AnoGradBach-error" class="error text-danger"
+                                for="input-AnoGradBach">{{ $errors->first('AnoGradBach') }}</span>
                             @endif
                         </div>
                     </div>
@@ -214,9 +237,13 @@
                     <label>{{ __('Fecha estimada de termino de estudios') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('Duracion') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('Duracion') ? ' is-invalid' : '' }}" name="Duracion" id="Duracion" type="date" placeholder="{{ __('Fecha estimada de termino de estudios') }}" value="{{ old('Duracion',$becado->Duracion) }}" required />
+                            <input class="form-control{{ $errors->has('Duracion') ? ' is-invalid' : '' }}"
+                                name="Duracion" id="Duracion" type="date"
+                                placeholder="{{ __('Fecha estimada de termino de estudios') }}"
+                                value="{{ old('Duracion',$becado->Duracion) }}" required />
                             @if ($errors->has('Duracion'))
-                            <span id="Duracion-error" class="error text-danger" for="input-Duracion">{{ $errors->first('Duracion') }}</span>
+                            <span id="Duracion-error" class="error text-danger"
+                                for="input-Duracion">{{ $errors->first('Duracion') }}</span>
                             @endif
                         </div>
                     </div>
@@ -226,7 +253,8 @@
                 <div class="mb-3">
                     {{ Form::label('subir foto del becado') }}
 
-                    <input class="form-control" type="file" name="Foto_path" id="Foto_path" accept=".jpg,.png,.jpeg" class="hidden">
+                    <input class="form-control" type="file" name="Foto_path" id="Foto_path" accept=".jpg,.png,.jpeg"
+                        class="hidden">
 
                 </div>
             </div>
@@ -294,9 +322,13 @@
                     <label>{{ __('Fecha de inicio en la beca') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('Anoiniciobeca') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('Anoiniciobeca') ? ' is-invalid' : '' }}" name="Anoiniciobeca" id="input-Anoiniciobeca" type="date" placeholder="{{ __('Anoiniciobeca') }}" value="{{ old('Anoiniciobeca',$becado->Anoiniciobeca) }}" required />
+                            <input class="form-control{{ $errors->has('Anoiniciobeca') ? ' is-invalid' : '' }}"
+                                name="Anoiniciobeca" id="input-Anoiniciobeca" type="date"
+                                placeholder="{{ __('Anoiniciobeca') }}"
+                                value="{{ old('Anoiniciobeca',$becado->Anoiniciobeca) }}" required />
                             @if ($errors->has('Anoiniciobeca'))
-                            <span id="Anoiniciobeca-error" class="error text-danger" for="input-Anoiniciobeca">{{ $errors->first('Anoiniciobeca') }}</span>
+                            <span id="Anoiniciobeca-error" class="error text-danger"
+                                for="input-Anoiniciobeca">{{ $errors->first('Anoiniciobeca') }}</span>
                             @endif
                         </div>
                     </div>
@@ -308,9 +340,13 @@
                     <label>{{ __('Fecha de Graduación.') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('AnodeGraduacion') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('AnodeGraduacion') ? ' is-invalid' : '' }}" name="AnodeGraduacion" id="input-AnodeGraduacion" type="date" placeholder="{{ __('AnodeGraduacion') }}" value="{{ old('AnodeGraduacion',$becado->AnodeGraduacion) }}" />
+                            <input class="form-control{{ $errors->has('AnodeGraduacion') ? ' is-invalid' : '' }}"
+                                name="AnodeGraduacion" id="input-AnodeGraduacion" type="date"
+                                placeholder="{{ __('AnodeGraduacion') }}"
+                                value="{{ old('AnodeGraduacion',$becado->AnodeGraduacion) }}" />
                             @if ($errors->has('AnodeGraduacion'))
-                            <span id="AnodeGraduacion-error" class="error text-danger" for="input-AnodeGraduacion">{{ $errors->first('AnodeGraduacion') }}</span>
+                            <span id="AnodeGraduacion-error" class="error text-danger"
+                                for="input-AnodeGraduacion">{{ $errors->first('AnodeGraduacion') }}</span>
                             @endif
                         </div>
                     </div>
@@ -322,9 +358,13 @@
                     <label>{{ __('Fecha de Baja en la beca') }}</label>
                     <div>
                         <div class="form-group{{ $errors->has('FechadeBaja') ? ' has-danger' : '' }}">
-                            <input class="form-control{{ $errors->has('FechadeBaja') ? ' is-invalid' : '' }}" name="FechadeBaja" id="input-FechadeBaja" type="date" placeholder="{{ __('FechadeBaja') }}" value="{{ old('FechadeBaja',$becado->FechadeBaja) }}" />
+                            <input class="form-control{{ $errors->has('FechadeBaja') ? ' is-invalid' : '' }}"
+                                name="FechadeBaja" id="input-FechadeBaja" type="date"
+                                placeholder="{{ __('FechadeBaja') }}"
+                                value="{{ old('FechadeBaja',$becado->FechadeBaja) }}" />
                             @if ($errors->has('FechadeBaja'))
-                            <span id="FechadeBaja-error" class="error text-danger" for="input-FechadeBaja">{{ $errors->first('FechadeBaja') }}</span>
+                            <span id="FechadeBaja-error" class="error text-danger"
+                                for="input-FechadeBaja">{{ $errors->first('FechadeBaja') }}</span>
                             @endif
                         </div>
                     </div>
@@ -423,7 +463,7 @@
     </div>
 </div>
 <style>
-    /* body {
+/* body {
     font-weight: bold;
 } */
 </style>

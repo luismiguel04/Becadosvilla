@@ -60,6 +60,9 @@ class BecadoController extends Controller
             ->groupBy('status')
             ->get();
 
+
+
+
         return view('becado.index', compact('becados', 'fechaa', 'becadost', 'becadosc'))
             ->with('i', (request()->input('page', 1) - 1) * $becados->perPage());
     }

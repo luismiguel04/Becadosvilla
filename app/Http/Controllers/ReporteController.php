@@ -8,17 +8,14 @@ use DB;
 
 use Illuminate\Http\Request;
 use App\Models\Becado;
-use App\Models\Gasto;
-
 use App\Models\Detallegasto;
-use App\Models\user;
+
 use App\Models\Programa;
 use App\Models\Servicio;
 use Dompdf\Dompdf;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
-use Psy\Formatter\Formatter;
-use Stringable;
+
 
 class ReporteController extends Controller
 {
@@ -129,7 +126,7 @@ class ReporteController extends Controller
         ])->loadView('reporte.programaf', compact('becados', 'programa', 'i'))
             ->setPaper('a4');
         //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte programa con foto.pdf');
     }
     public function programafano($id)
     {
@@ -150,7 +147,7 @@ class ReporteController extends Controller
             ->setPaper('a4');
 
         //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte por programa con foto.pdf');
     }
 
 
@@ -180,7 +177,7 @@ class ReporteController extends Controller
             ])->loadView('reporte.estatus', compact('becados', 'i', 'estatus'))
                 ->setPaper('a4');
             //return $pdf->download('provedores.pdf');
-            return $pdf->stream('reporte programa.pdf');
+            return $pdf->stream('reporte por estatus.pdf');
         }
     }
 
@@ -203,7 +200,7 @@ class ReporteController extends Controller
         ])->loadView('reporte.fechan', compact('ordenados', 'i'))
             ->setPaper('a4');
         //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte de becarios por fecha de nacimiento.pdf');
     }
 
     public function graduados(Request $request)
@@ -230,7 +227,7 @@ class ReporteController extends Controller
 
 
         //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte de graduados.pdf');
     }
     public function graduadosf(Request $request)
     {
@@ -253,10 +250,7 @@ class ReporteController extends Controller
         ])->loadView('reporte.graduadosf', compact('becados', 'i', 'id'))
             ->setPaper('a4');
 
-
-
-        //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte de graduados con foto.pdf');
     }
     public function anoiniciobeca(Request $request)
     {
@@ -270,7 +264,6 @@ class ReporteController extends Controller
         $becados = Becado::whereYear('Anoiniciobeca', $id)->get();
         $becadosc = Becado::whereYear('Anoiniciobeca', $id)->get()->count();
 
-        //$becadosor = Becado::all()->groupBy('status');
         $i = 0;
 
 
@@ -280,14 +273,11 @@ class ReporteController extends Controller
         ])->loadView('reporte.anoiniciobeca', compact('becados', 'i', 'id', 'becadosc'))
             ->setPaper('a4');
 
-
-
-        //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte de becados por año de inicio.pdf');
     }
+
     public function gastosporano(Request $request)
     {
-
         $dompdf = new Dompdf();
         $options = $dompdf->getOptions();
         $options->setDefaultFont('Verdana');
@@ -295,18 +285,15 @@ class ReporteController extends Controller
 
         $id = $request->get('becado_id');
         $ano = $request->get('ano');
-
         $becado = Becado::find($id);
         $i = 0;
 
         $detalles = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
             ->whereYear('gastos.fecha', $ano)
-            /*  ->whereDate('gastos.fecha', '2023-09-02') */
             ->where('detallegastos.becado_id', $id)
+            ->orderBy('gastos.fecha', 'asc')
             ->get(['detallegastos.*']);
 
-
-        /*  $detalles = Detallegasto::all()->where('becado_id', '=', $id)->where(Gasto::whereYear('fecha', '2023'))->get(); */
         $detalle = Detallegasto::all()->where('becado_id', '=', $id)->first();
         $total = $detalles->sum('Monto');
 
@@ -319,10 +306,56 @@ class ReporteController extends Controller
         ])->loadView('reporte.gastosporano', compact('becado', 'i', 'detalles', 'detalle', 'total'))
             ->setPaper('a4');
 
+        return $pdf->stream('reporte de gastos por año.pdf');
+    }
+
+    public function gastoacumulado(Request $request)
+    {
+        $dompdf = new Dompdf();
+        $options = $dompdf->getOptions();
+        $options->setDefaultFont('Verdana');
+        $dompdf->setOptions($options);
+
+        $id = $request->get('becado_id');
+        $ano = $request->get('ano');
+        $becado = Becado::find($id);
+        $i = 0;
+
+        $registros = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
+            ->where('detallegastos.becado_id', $id)
+            ->select('monto', DB::raw('MONTH(fecha) as mes'), DB::raw('YEAR(fecha) as ano'))
+            ->distinct()
+            ->orderBy('gastos.fecha', 'asc')
+            ->get();
+
+        $datos = [];
+        $totalesAnuales = [];
+        $total = 0;
+        $colt = 0;
+
+        foreach ($registros as $registro) {
+            $mes = $registro->mes;
+            $ano = $registro->ano;
+            $monto = $registro->monto;
+
+            // Agregar el monto al mes y año correspondiente en el array de datos
+            $datos[$ano][$mes] = $monto;
+            if (!isset($totalesAnuales[$ano])) {
+                $totalesAnuales[$ano] = 0;
+            }
+            $totalesAnuales[$ano] += $monto;
+            $total += $registro->monto;
+        }
 
 
-        //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+
+        $pdf = PDF::setOptions([
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true
+        ])->loadView('reporte.gastoacumulado', compact('becado', 'i', 'datos', 'totalesAnuales', 'colt', 'total'))
+            ->setPaper('a4');
+
+        return $pdf->stream('reporte de gastos acumulado.pdf');
     }
 
     public function gastoprograma(Request $request)
@@ -360,8 +393,7 @@ class ReporteController extends Controller
         ])->loadView('reporte.gastospormes', compact('i', 'programab', 'detalles', 'total', 'fecha', 'becados'))
             ->setPaper('legal', 'landscape');
 
-        //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte de gastos por programa.pdf');
     }
     public function gastoprogramaanual(Request $request)
     {
@@ -373,9 +405,6 @@ class ReporteController extends Controller
 
 
         $fecha = $request->get('fecha');
-        /*   $Mes = Carbon::parse($fecha)->Format('m'); */
-        /*  $ano = Carbon::parse($fecha)->Format('Y'); */
-
         $becados = Becado::all();
 
         $programa = $request->get('programa_id');
@@ -395,19 +424,6 @@ class ReporteController extends Controller
 
         $TotalFound = $begfom + $addfom + $interes;
         $TotalFoundD = $TotalFound / $tc;
-
-
-
-
-        /*  $grupos = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
-            ->leftJoin('becados', 'becados.id', '=', 'detallegastos.becado_id')
-            ->leftJoin('programas', 'programas.id', '=', 'becados.programa_id')
-
-
-            ->whereYear('gastos.fecha', $ano)
-            ->where('programas.id', $programa)
-            ->selectraw(' sum(Monto) as total , becado_id as id')->groupBy('becado_id')
-            ->get(); */
 
         $detalles = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
             ->leftJoin('becados', 'becados.id', '=', 'detallegastos.becado_id')
@@ -434,6 +450,6 @@ class ReporteController extends Controller
             ->setPaper('letter');
 
         //return $pdf->download('provedores.pdf');
-        return $pdf->stream('reporte programa.pdf');
+        return $pdf->stream('reporte para bienechores.pdf');
     }
 }
