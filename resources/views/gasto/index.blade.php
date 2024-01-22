@@ -17,7 +17,8 @@ Gasto
                         </span>
 
                         <div class="float-right">
-                            <a href="{{ route('gastos.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
+                            <a href="{{ route('gastos.create') }}" class="btn btn-primary btn-sm float-right"
+                                data-placement="left">
                                 {{ __('Crear Nuevo') }}
                             </a>
 
@@ -31,63 +32,112 @@ Gasto
                 @endif
 
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="Table" class="table  table-striped table-hover">
-                            <thead class="thead">
-                                <tr>
-                                    <th>No</th>
+
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-8">
+
+                                <div class="input-group mb-6">
+
+                                    <form method="POST" action="{{ route('gastoprograma') }}">
+                                        @csrf
+                                        Reporte de solicitud de dinero por mes por programa
 
 
-                                    <th>Mes/Año</th>
+                                        <label for="progrma_id">
+                                        </label>
+                                        <div class="input-group mb-3">
+
+                                            <select name="programa_id" id="programa_id" class="form-select" required>
+                                                <option value="">Seleccionar programa</option>
+                                                @foreach ($programas as $item)
+
+                                                <option value="{{ $item->id }}">
+                                                    {{ $item->nombre }}
+                                                </option>
+
+                                                @endforeach
+                                            </select>
+                                            <input type="month" placeholder="escriba un año " name="fecha" id="fecha"
+                                                required>
+                                            <button type="submit" target="_blank" class="btn btn-primary">
+                                                {{ __('Generar') }}
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-2 mt-4"><a class="btn btn-primary btn-sm float-right"
+                                    data-placement="left" href="{{ route('reportes.index') }}">
+                                    Reporte bienechores</a>
+
+
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="Table" class="table  table-striped table-hover">
+                                <thead class="thead">
+                                    <tr>
+                                        <th>No</th>
+
+
+                                        <th>Mes/Año</th>
 
 
 
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($gastos as $gasto)
-                                <tr>
-                                    <td>{{ ++$i }}</td>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($gastos as $gasto)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($gasto->fecha)->formatLocalized(' %B %Y')}}
+                                        </td>
+
+
+
+
+                                        <td>
+                                            <form action="{{ route('gastos.destroy',$gasto->id) }}" class="formEliminar"
+                                                method="POST">
+                                                <a class="btn btn-sm btn-primary "
+                                                    href="{{ route('gastos.show',$gasto->id) }}"><i
+                                                        class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
+                                                <a class="btn btn-sm btn-success"
+                                                    href="{{ route('gastos.edit',$gasto->id) }}"><i
+                                                        class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"><i
+                                                        class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot class>
                                     <td>
-                                        {{ \Carbon\Carbon::parse($gasto->fecha)->formatLocalized(' %B %Y')}}
+                                        TOTAL
                                     </td>
-
-
-
-
                                     <td>
-                                        <form action="{{ route('gastos.destroy',$gasto->id) }}" class="formEliminar" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('gastos.show',$gasto->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                            <a class="btn btn-sm btn-success" href="{{ route('gastos.edit',$gasto->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                        </form>
+
                                     </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                            <tfoot class>
-                                <td>
-                                    TOTAL
-                                </td>
-                                <td>
+                                    <td>
+                                        <slot>$</slot>{{ number_format($total, 2, ".", ",") }}
 
-                                </td>
-                                <td>
-                                    <slot>$</slot>{{ number_format($total, 2, ".", ",") }}
-
-                                </td>
-                            </tfoot>
-                        </table>
+                                    </td>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
-            {!! $gastos->links() !!}
         </div>
-    </div>
-    <script>
+        <script>
         $('#Table').DataTable({
             language: {
                 "lengthMenu": "Mostrar   _MENU_   registros ",
@@ -149,6 +199,6 @@ Gasto
                     }, false)
                 })
         })()
-    </script>
-</div>
-@endsection
+        </script>
+    </div>
+    @endsection

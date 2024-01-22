@@ -15,6 +15,20 @@
                         <span>{{ __('Mostrando ') }} Becado: <strong>{{ $becado->nombre }}
                                 {{ $becado->ApellidoP }} {{ $becado->ApellidoM }}</strong></span>
                     </div>
+                    <div>
+                        <form method="POST" target="_blank" action="{{ route('gastosporano') }}">
+                            @csrf
+                            <label for="becado_id">Gastos por Año
+                            </label>
+                            <input type="hidden" value="{{$becado->id}}" name="becado_id" id="becado_id">
+                            <input type="number" value="2022" min="2019" placeholder="escriba un año " name="ano"
+                                id="ano">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Generar') }}
+                            </button>
+
+                        </form>
+                    </div>
                     <div><a class="btn btn-primary btn-sm float-right" data-placement="left"
                             href="{{ route('becados.index') }}">
                             {{ __('Regresar') }}</a>
@@ -37,11 +51,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-between">
-                                        <div class="position-absolute top-0 start-0 translate-middle"><label
-                                                class=" rounded bg-primary border-primary border border-3 text-white  fw-bold">
-                                                {{ $becado->id }}
-                                            </label>
-                                        </div>
+
 
                                         <div class="d-flex ">
                                             <p class="fs-6 fw-bold">Nombre:</p>
@@ -253,13 +263,18 @@
 
                                         <div>
                                             <img src="  http://localhost/becadosvilla/storage/app/images/{{$becado->Foto_path}} "
-                                                class="rounded-circle border  border-gray border-5" height="100px"
+                                                class="rounded-circle border  border-gray border-5 mb-3" height="100px"
                                                 width="90px">
+
+                                            <a class="btn btn-primary btn-sm float-right mb-1" data-placement="left"
+                                                target="_blank" href="{{ route('perfil',$becado->id) }}">
+                                                {{ __('Perfil') }}</a>
+                                            <a class="btn btn-primary btn-sm float-right" data-placement="left"
+                                                target="_blank" href="{{ route('gastoacumulado',$becado->id) }}">
+                                                {{ __('Gastos') }}</a>
                                         </div>
-
-
-
                                     </div>
+
 
                                     <!--  </div> -->
                                 </div>
@@ -355,7 +370,60 @@
 
                                             @endforeach
                                         </table>
+                                        <table class=" table table table-hover table-striped table-sm">
+                                            <thead class=" thead  align-top">
+                                                <tr>
+                                                    <th>Año</th>
+                                                    @foreach(array_keys($datos) as $ano)
+                                                    <th>{{ $ano }}</th>
+                                                    @endforeach
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>Total Anual</th>
+                                                    @foreach(array_keys($datos) as $ano)
+                                                    <th style="text-align:center;">
+                                                        <slot>$</slot>
+                                                        {{ number_format($totalesAnuales[$ano], 2, ".", ",") }}
+                                                    </th>
+                                                    @endforeach
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th COLSPAN="{{$colt}}" scope="row" style="text-align:center;">Monto
+                                                        Total
+
+                                                        <slot>$</slot>{{number_format($total, 2, ".", ",") }}
+                                                    </th>
+
+
+                                                </tr>
+                                            </tfoot>
+                                        </table>
                                     </div>
+
+
+                                </div>
+                                <div class="d-flex align-items-end flex-column mb-3"
+                                    style="height: 200px; padding-top:10px;">
+
+                                    <a class="btn btn-sm btn-success mb-2"
+                                        href="{{ route('becados.edit',$becado->id) }}"> Editar <i
+                                            class="fa fa-fw fa-edit"></i></a>
+
+
+                                    <form action="{{ route('becados.destroy',$becado->id) }}" class="formEliminarb"
+                                        method="POST">
+
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"> Eliminar <i
+                                                class="fa fa-fw fa-trash"> </i> </button>
+                                    </form>
+
 
                                 </div>
                             </div>
@@ -396,6 +464,39 @@
                             Swal.fire(
                                 'Borrado!',
                                 'El documento ha sido borrado exitosamente.',
+                                'success'
+                            )
+                        }
+                    })
+                }, false)
+            })
+    })()
+    </script>
+    <script>
+    (function() {
+        'use strict'
+        var forms = document.querySelectorAll('.formEliminarb')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+
+                    event.preventDefault()
+                    event.stopPropagation()
+                    Swal.fire({
+                        title: 'Eliminar becado',
+                        text: "Esta seguro de eliminar el becado seleccionado para eliminarlo es necesario asegurarse que el becado no tenga ningun registro ya que afectara en la base de datos! si desea darlo de baja cambien el status a baja.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, borrar becado!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                            Swal.fire(
+                                'Borrado!',
+                                'El becado ha sido borrado exitosamente.',
                                 'success'
                             )
                         }

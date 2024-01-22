@@ -55,11 +55,13 @@ Route::post('/graduados', [App\Http\Controllers\ReporteController::class, 'gradu
 Route::post('/graduadosf', [App\Http\Controllers\ReporteController::class, 'graduadosf'])->name('graduadosf');
 Route::post('/anoiniciobeca', [App\Http\Controllers\ReporteController::class, 'anoiniciobeca'])->name('anoiniciobeca');
 Route::post('/gastosporano', [App\Http\Controllers\ReporteController::class, 'gastosporano'])->name('gastosporano');
-Route::post('/gastoacumulado', [App\Http\Controllers\ReporteController::class, 'gastoacumulado'])->name('gastoacumulado');
+Route::get('/gastoacumulado/{id}', [App\Http\Controllers\ReporteController::class, 'gastoacumulado'])->name('gastoacumulado');
 Route::post('/gastoprograma', [App\Http\Controllers\ReporteController::class, 'gastoprograma'])->name('gastoprograma');
 Route::post('/gastoprogramaanual', [App\Http\Controllers\ReporteController::class, 'gastoprogramaanual'])->name('gastoprogramaanual');
 
 
+Route::get('/programasindexc', [App\Http\Controllers\ProgramaController::class, 'indexc'])->name('pindexc');
+Route::get('/serviciosindexc', [App\Http\Controllers\ServicioController::class, 'indexc'])->name('sindexc');
 Route::get('/fechan', [App\Http\Controllers\ReporteController::class, 'fechan'])->name('fechan');
 Route::get('/search', [App\Http\Controllers\GastoController::class, 'search'])->name('search');
 Route::get('/searche', [App\Http\Controllers\GastoController::class, 'searche'])->name('searche');

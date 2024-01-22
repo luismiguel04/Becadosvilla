@@ -7,6 +7,7 @@ use DB;
 use App\Models\Becado;
 use App\Models\Programa;
 use App\Models\Servicio;
+use App\Models\Detallegasto;
 
 use App\Models\documentos;
 use Illuminate\Http\Request;
@@ -49,22 +50,28 @@ class BecadoController extends Controller
 
     public function index()
     {
-        $becados = Becado::paginate();
+        $becados = Becado::all();
 
         $date = date('Y-m-d');
 
         $fechaa = Carbon::parse($date);
         //$becadosc = Becado::all()->groupBy('status')->count();
         $becadost = Becado::pluck('status')->count();
+        $i = 0;
+        $estatus = [
+            "Activo",
+            "Baja",
+            "Graduado"
+        ];
         $becadosc = Becado::select('status', Becado::raw('count(*) as total'))
+
             ->groupBy('status')
             ->get();
 
 
 
 
-        return view('becado.index', compact('becados', 'fechaa', 'becadost', 'becadosc'))
-            ->with('i', (request()->input('page', 1) - 1) * $becados->perPage());
+        return view('becado.index', compact('becados', 'fechaa', 'becadost', 'becadosc', 'i', 'estatus'));
     }
 
     /**
@@ -122,8 +129,36 @@ class BecadoController extends Controller
         $documentos = documentos::all()->where('becado_id', '=', $id);
 
 
+        $i = 0;
 
-        return view('becado.show', compact('becado', 'documentos'));
+        $registros = Detallegasto::join('gastos', 'gastos.id', '=', 'detallegastos.gasto_id')
+            ->where('detallegastos.becado_id', $id)
+            ->select('monto', DB::raw('MONTH(fecha) as mes'), DB::raw('YEAR(fecha) as ano'))
+            ->distinct()
+            ->orderBy('gastos.fecha', 'asc')
+            ->get();
+
+        $datos = [];
+        $totalesAnuales = [];
+        $total = 0;
+        $colt = 0;
+
+        foreach ($registros as $registro) {
+            $mes = $registro->mes;
+            $ano = $registro->ano;
+            $monto = $registro->monto;
+
+            // Agregar el monto al mes y año correspondiente en el array de datos
+            $datos[$ano][$mes] = $monto;
+            if (!isset($totalesAnuales[$ano])) {
+                $totalesAnuales[$ano] = 0;
+            }
+            $totalesAnuales[$ano] += $monto;
+            $total += $registro->monto;
+        }
+
+
+        return view('becado.show', compact('becado', 'documentos', 'i', 'datos', 'totalesAnuales', 'colt', 'total'));
     }
 
     /**
@@ -165,7 +200,7 @@ class BecadoController extends Controller
 
         $becado->save();
 
-        return redirect()->route('becados.index')
+        return redirect()->route('becados.show', $becado->id)
             ->with('success', 'Becado updated successfully');
     }
 

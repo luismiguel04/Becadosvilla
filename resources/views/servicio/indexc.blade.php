@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-Programa
+Servicio
 @endsection
 
 @section('content')
@@ -13,14 +13,15 @@ Programa
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
                         <span id="card_title">
-                            {{ __('Programas de Becas Villa de los Niños') }}
+                            {{ __('Lugares de Servicios de becados') }}
                         </span>
 
                         <div class="float-right">
-                            <a href="{{ route('programas.create') }}" class=" btn btn-outline-primary"
+                            <a href="{{ route('servicios.create') }}" class=" btn btn-outline-primary"
                                 data-placement="left">
-                                {{ __('Crear nuevo programa') }}
+                                {{ __('Agregar nuevo lugar de servicio') }}
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -32,64 +33,50 @@ Programa
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover" id="Table">
+                        <table id=Table class="table table-striped table-hover">
                             <thead class="thead">
                                 <tr>
                                     <th>No</th>
 
-                                    <th>Nombre del programa</th>
+                                    <th>Nombre del lugar de servicio</th>
                                     <th>Status</th>
 
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($programas as $programa)
+                                @foreach ($servicios as $servicio)
                                 <tr>
                                     <td>{{ ++$i }}</td>
 
-                                    <td>{{ $programa->nombre }}</td>
-                                    <td>{{ $programa->status}}</td>
+                                    <td>{{ $servicio->nombre }}</td>
+                                    <td>{{ $servicio->status }}</td>
 
                                     <td>
-                                        <form action="{{ route('programas.destroy',$programa->id) }}"
+                                        <form action="{{ route('servicios.destroy',$servicio->id) }}"
                                             class="formEliminar" method="POST">
-                                            <a class="btn btn-sm btn-primary "
-                                                href="{{ route('programas.show',$programa->id) }}"><i
-                                                    class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a>
-                                            <!--  <a class="btn btn-sm btn-success"
-                                                href="{{ route('programas.edit',$programa->id) }}"><i
+                                            <!-- <a class="btn btn-sm btn-primary "
+                                                href="{{ route('servicios.show',$servicio->id) }}"><i
+                                                    class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a> -->
+                                            <a class="btn btn-sm btn-success"
+                                                href="{{ route('servicios.edit',$servicio->id) }}"><i
                                                     class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
- -->
                                             @csrf
                                             @method('DELETE')
-                                            <!--  <button type="submit" class="btn btn-danger btn-sm"><i
-                                                    class="fa fa-fw fa-trash" onclick="alert"></i>
-                                                {{ __('Eliminar') }}</button> -->
-
+                                            <button type="submit" class="btn btn-danger btn-sm"><i
+                                                    class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                         </form>
-
-
-
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
-
-
-
-
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-
-
-
     <script>
     $('#Table').DataTable({
         language: {
@@ -123,7 +110,7 @@ Programa
 
 
 
-    (function alert() {
+    (function() {
         'use strict'
         var forms = document.querySelectorAll('.formEliminar')
 
@@ -134,19 +121,19 @@ Programa
                     event.preventDefault()
                     event.stopPropagation()
                     Swal.fire({
-                        title: 'Eliminar programa de beca',
-                        text: "Esta seguro de eliminar el programa de beca selecionado!",
+                        title: 'Eliminar servicio',
+                        text: "Esta seguro de eliminar el servicio seleccionado!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Si, borrar programa!'
+                        confirmButtonText: 'Si, borrar servicio!'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             this.submit();
                             Swal.fire(
                                 'Borrado!',
-                                'El programa ha sido borrado exitosamente.',
+                                'El servicio ha sido borrado exitosamente.',
                                 'success'
                             )
                         }
@@ -156,5 +143,4 @@ Programa
     })()
     </script>
 </div>
-
 @endsection

@@ -88,19 +88,7 @@ body {
 
 @import "../node_modules/bootstrap/scss/functions";
 
-// Variable overrides second
-/* $primary: rgb(27, 189, 238); */
 
-/* $secondary: rgb(27, 189, 238);
-$success: rgb(50, 185, 9);
-$info: rgb(50, 185, 9);
-$warning: rgb(27, 189, 238);
-$danger: rgb(241, 14, 52);
-$light: rgb(27, 189, 238);
-$dark: rgb(27, 189, 238);
-$enable-shadows: true;
-$navbar-dark-color: rgb(27, 189, 238); */
-// Required Bootstrap imports
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/variables-dark";
 @import "../node_modules/bootstrap/scss/maps";

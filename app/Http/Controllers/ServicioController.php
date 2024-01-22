@@ -18,10 +18,17 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        $servicios = Servicio::paginate();
+        $servicios = Servicio::all();
+        $i = 0;
 
-        return view('servicio.index', compact('servicios'))
-            ->with('i', (request()->input('page', 1) - 1) * $servicios->perPage());
+        return view('servicio.index', compact('servicios', 'i'));
+    }
+    public function indexc()
+    {
+        $servicios = Servicio::all();
+        $i = 0;
+
+        return view('servicio.indexc', compact('servicios', 'i'));
     }
 
     /**

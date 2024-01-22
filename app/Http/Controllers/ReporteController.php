@@ -9,6 +9,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\Becado;
 use App\Models\Detallegasto;
+use App\Models\Gasto;
 
 use App\Models\Programa;
 use App\Models\Servicio;
@@ -309,15 +310,14 @@ class ReporteController extends Controller
         return $pdf->stream('reporte de gastos por año.pdf');
     }
 
-    public function gastoacumulado(Request $request)
+    public function gastoacumulado($id)
     {
         $dompdf = new Dompdf();
         $options = $dompdf->getOptions();
         $options->setDefaultFont('Verdana');
         $dompdf->setOptions($options);
 
-        $id = $request->get('becado_id');
-        $ano = $request->get('ano');
+
         $becado = Becado::find($id);
         $i = 0;
 

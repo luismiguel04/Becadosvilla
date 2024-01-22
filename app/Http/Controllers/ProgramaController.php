@@ -18,10 +18,17 @@ class ProgramaController extends Controller
      */
     public function index()
     {
-        $programas = Programa::paginate();
+        $programas = Programa::all();
+        $i = 0;
 
-        return view('programa.index', compact('programas'))
-            ->with('i', (request()->input('page', 1) - 1) * $programas->perPage());
+        return view('programa.index', compact('programas', 'i'));
+    }
+    public function indexc()
+    {
+        $programas = Programa::all();
+        $i = 0;
+
+        return view('programa.indexc', compact('programas', 'i'));
     }
 
     /**

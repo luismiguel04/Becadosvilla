@@ -27,15 +27,15 @@ class GastoController extends Controller
      */
     public function index()
     {
-        $gastos = Gasto::paginate();
+        $gastos = Gasto::all();
         $becados = Becado::all();
         $detalle = Detallegasto::all();
         $programas = Programa::all();
         $total = $detalle->sum('Monto');
+        $i = 0;
 
 
-        return view('gasto.index', compact('gastos', 'becados', 'detalle', 'total', 'programas'))
-            ->with('i', (request()->input('page', 1) - 1) * $gastos->perPage());
+        return view('gasto.index', compact('gastos', 'becados', 'detalle', 'total', 'programas', 'i'));
     }
 
     /**
